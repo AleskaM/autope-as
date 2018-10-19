@@ -131,7 +131,7 @@ public String nome;
 
     private void BtEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEntrarActionPerformed
              
-        if((TxLogin.getText().equals("gerente.c01") && TxSenha.getText().equals("121"))){
+        /*if((TxLogin.getText().equals("gerente.c01") && TxSenha.getText().equals("121"))){
             JOptionPane.showMessageDialog(null, "Bem Vindo!");
             TelaInicial Tela = new TelaInicial();
             Tela.GerenteLogin();
@@ -170,7 +170,7 @@ public String nome;
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
         }
         getRootPane().setDefaultButton(BtEntrar);
-        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
+        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);*/
     }//GEN-LAST:event_BtEntrarActionPerformed
 
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
@@ -195,7 +195,7 @@ public String nome;
 
     private void TxSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxSenhaActionPerformed
               
-        if((TxLogin.getText().equals("gerente.c01") && TxSenha.getText().equals("121"))){
+     /*   if((TxLogin.getText().equals("gerente.c01") && TxSenha.getText().equals("121"))){
             JOptionPane.showMessageDialog(null, "Bem Vindo!");
             TelaInicial Tela = new TelaInicial();
             Tela.GerenteLogin();
@@ -234,7 +234,7 @@ public String nome;
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
         }
         getRootPane().setDefaultButton(BtEntrar);
-        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
+        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);*/
     }//GEN-LAST:event_TxSenhaActionPerformed
 
     

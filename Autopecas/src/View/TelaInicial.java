@@ -36,21 +36,12 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        BtLogout = new javax.swing.JMenu();
-        BtSair = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        ClienteManutençao = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        BtManutenção = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        FuncionarioManutenção = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        PeçasManutençao = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Início");
@@ -68,46 +59,17 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGap(0, 370, Short.MAX_VALUE)
         );
 
-        BtLogout.setText("Logout");
-        BtLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtLogoutActionPerformed(evt);
-            }
-        });
-
-        BtSair.setText("Sair");
-        BtSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtSairActionPerformed(evt);
-            }
-        });
-        BtLogout.add(BtSair);
-
-        jMenuBar1.add(BtLogout);
-
         jMenu4.setText("Clientes");
 
-        jMenuItem4.setText("Manutenção");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        ClienteManutençao.setText("Manutenção");
+        ClienteManutençao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                ClienteManutençaoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(ClienteManutençao);
 
         jMenuBar1.add(jMenu4);
-
-        jMenu6.setText("Fornecedor");
-
-        jMenuItem6.setText("Manutenção");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu6);
 
         jMenu1.setText("Funcionários");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,59 +78,27 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        BtManutenção.setText("Manutenção");
-        BtManutenção.addActionListener(new java.awt.event.ActionListener() {
+        FuncionarioManutenção.setText("Manutenção");
+        FuncionarioManutenção.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtManutençãoActionPerformed(evt);
+                FuncionarioManutençãoActionPerformed(evt);
             }
         });
-        jMenu1.add(BtManutenção);
+        jMenu1.add(FuncionarioManutenção);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Oficina");
-
-        jMenuItem1.setText("Ordem de Serviço");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu2);
-
         jMenu3.setText("Peças");
 
-        jMenuItem2.setText("Estoque");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        PeçasManutençao.setText("Manutençao");
+        PeçasManutençao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                PeçasManutençaoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
-
-        jMenuItem3.setText("Venda");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(PeçasManutençao);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu5.setText("Veículos");
-
-        jMenuItem5.setText("Manutenção");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -185,7 +115,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void MecanicoLogin()
+    /*public void MecanicoLogin()
     {
         jMenu1.setEnabled(false);
         jMenu1.setVisible(false);
@@ -217,70 +147,41 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu4.setVisible(true);
         jMenu5.setEnabled(true);
         jMenu5.setVisible(true);
-    }
-    private void BtManutençãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtManutençãoActionPerformed
-        
-    }//GEN-LAST:event_BtManutençãoActionPerformed
+    }*/
+    private void FuncionarioManutençãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioManutençãoActionPerformed
+        TelaFuncionario tf = new TelaFuncionario();
+        jDesktopPane1.add(tf);
+        tf.setVisible(true);
+    }//GEN-LAST:event_FuncionarioManutençãoActionPerformed
 
-    private void BtLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtLogoutActionPerformed
-        
-    }//GEN-LAST:event_BtLogoutActionPerformed
+    private void ClienteManutençaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteManutençaoActionPerformed
+      TelaCliente tc = new TelaCliente();
+      jDesktopPane1.add(tc);
+      tc.setVisible(true);
+    }//GEN-LAST:event_ClienteManutençaoActionPerformed
 
-    private void BtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSairActionPerformed
-        this.dispose();
-        TelaLogin Login = new TelaLogin();
-        Login.setVisible(true);
-    }//GEN-LAST:event_BtSairActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void PeçasManutençaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PeçasManutençaoActionPerformed
+        TelaPeças tp = new TelaPeças();
+        jDesktopPane1.add(tp);
+        tp.setVisible(true);
+    }//GEN-LAST:event_PeçasManutençaoActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         
     }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu BtLogout;
-    private javax.swing.JMenuItem BtManutenção;
-    private javax.swing.JMenuItem BtSair;
+    private javax.swing.JMenuItem ClienteManutençao;
+    private javax.swing.JMenuItem FuncionarioManutenção;
+    private javax.swing.JMenuItem PeçasManutençao;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }
