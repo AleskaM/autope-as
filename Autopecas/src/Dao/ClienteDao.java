@@ -23,7 +23,7 @@ public class ClienteDao {
     CadastroCliente cp = new CadastroCliente();
    public void salvar(CadastroClienteFisica cl) throws SQLException {
         sql = "insert into Cliente values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        pst = Conexao.getInstance().prepareCall(sql);
+        pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
         pst.setString(3,cl.getEndereço());

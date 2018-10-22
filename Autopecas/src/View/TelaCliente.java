@@ -805,7 +805,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         } 
         else{
             
-            JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
+            cadcliente = new CadastroClienteFisica();
             cadcliente.setNome(TxNomeCli.getText());
             cadcliente.setTipopessoa(String.valueOf(TxTipoPessoa.getSelectedItem()));
             cadcliente.setComplemento(TxComplementoCli.getText());
@@ -820,7 +820,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             cadcliente.setDatanascimento(TxDataNascimento.getText().replace("/",""));
             try {
                 CadCli.salvar(cadcliente);
-                
+                JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
                 
               
             } catch (SQLException ex) {
