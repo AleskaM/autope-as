@@ -840,13 +840,14 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }
     }
     else{
-        if(TxNomeCli.getText().length()== 0 || TxTipoPessoa.getSelectedItem().equals("Selecione") || TxComplementoCli.getText().length()==0 || TxCidadeCli.getText().length()==0|| TxLimiteCli.getText().length() ==0|| TxEndereçoCli.getText().length()==0 || TxBairroCli.getText().length()==0 || TxTelCli.getText().length()==0 || TxCelCli.getText().length()==0 || TxEmailCli.getText().length()==0 ||
-                TipodeViaCli.getSelectedItem().equals("Selecione") || TxEstadoCli.getSelectedItem().equals("Selecione") || TxCepCli.getText().length()==0 || TxCnpj.getText().equals("  .   .   /    -  ") || TxIdEstadual.getText().length()==0 ){
+        if(TxNomeCli.getText().length()== 0 || TxTipoPessoa.getSelectedItem().equals("Selecione") || TxComplementoCli.getText().length()==0 || TxCidadeCli.getText().length()==0|| TxLimiteCli.getText().length() ==0|| TxEndereçoCli.getText().length()==0 || TxBairroCli.getText().length()==0 ||  TxTelCli.getText().equals("(  )    -    ") ||  TxCelCli.getText().equals("(  )    -    ") || TxEmailCli.getText().length()==0 ||
+                TipodeViaCli.getSelectedItem().equals("Selecione") || TxEstadoCli.getSelectedItem().equals("Selecione") || TxCepCli.getText().equals("     -   ") || TxCnpj.getText().equals("  .   .   /    -  ") || TxIdEstadual.getText().length()==0 ){
              JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             
         }
         else{
-            JOptionPane.showMessageDialog(null,"Cadstro Realizado com sucesso");
+            
+            cadjudi = new CadastroClienteJuridica();
             cadjudi.setNome(TxNomeCli.getText());
             cadjudi.setTipopessoa(String.valueOf(TxTipoPessoa.getSelectedItem()));
             cadjudi.setComplemento(TxComplementoCli.getText());
@@ -865,7 +866,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             
             try {
                 CadCli.salvarPessoaJuridica(cadjudi);
-                
+                 JOptionPane.showMessageDialog(null,"Cadstro Realizado com sucesso");
+                 limpar();
+                limpaTabela();
+                Show_Clientes();
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -49,7 +49,7 @@ public class ClienteDao {
     }
       public void salvarPessoaJuridica(CadastroClienteJuridica cl) throws SQLException {
         
-        sql = "INSERT INTO Cliente values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sql = "insert into Cliente values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
@@ -61,13 +61,15 @@ public class ClienteDao {
         pst.setString(8,cl.getEmail());
         pst.setString(9,cl.getTipodevia());
         pst.setString(10,cl.getEstado());
-        pst.setString(11,String.valueOf( cl.getCEP()));
-        pst.setString(12,String.valueOf(cl.getLimite()));
-        pst.setString(13,"");
-        pst.setString(14,"");
+        pst.setString(11,cl.getCidade());
+        pst.setString(12,String.valueOf( cl.getCEP()));
+        pst.setString(13,String.valueOf(cl.getLimite()));
+        pst.setString(14,cl.getTipopessoa());
         pst.setString(15,"");
-        pst.setString(12,String.valueOf(cl.getCnpj()));
-        pst.setString(14,String.valueOf(cl.getInscriçãoestadual()));
+        pst.setString(16,"");
+        pst.setString(17,"");
+        pst.setString(18,cl.getCnpj());
+        pst.setString(19,cl.getInscriçãoestadual());
         pst.execute();
         pst.close();
 
@@ -76,7 +78,7 @@ public class ClienteDao {
 
        
                                     
-        sql = "update Cliente set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?,celular=?,email=?,tipodevia=?,estado=?,cep=?,limite=?,rg=?,cpf=?,datanascimento=? where id= "+cl.getId();
+        sql = "update Cliente set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?,celular=?,email=?,tipodevia=?,estado=?,cidade=?,cep=?,limite=?,tipopessoa=?,rg=?,cpf=?,datanascimento=?,cnpj=?,inscri=? where id= "+cl.getId();
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
@@ -88,18 +90,21 @@ public class ClienteDao {
         pst.setString(8,cl.getEmail());
         pst.setString(9,cl.getTipodevia());
         pst.setString(10,cl.getEstado());
-        pst.setString(11,String.valueOf( cl.getCEP()));
-        pst.setString(12,String.valueOf(cl.getLimite()));
-        pst.setString(13,cl.getRg());
-        pst.setString(14,String.valueOf(cl.getCpf()));
-        pst.setString(15,(cl.getDatanascimento()));
+        pst.setString(11,cl.getCidade());
+        pst.setString(12,String.valueOf( cl.getCEP()));
+        pst.setString(13,String.valueOf(cl.getLimite()));
+        pst.setString(14,cl.getTipopessoa());
+        pst.setString(15,cl.getRg());
+        pst.setString(16,String.valueOf(cl.getCpf()));
+        pst.setString(17,(cl.getDatanascimento()));
+        pst.setString(18,"");
+        pst.setString(19,"");
         pst.execute();
         pst.close();
-
     }
   public void AlterarPessoaJuridica(CadastroClienteJuridica cl) throws SQLException {
        
-        sql = "update Cliente set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?,celular=?,email=?,cep=?,limite=?,cnpj=?,inscri=? where id= "+cl.getId();
+        sql = "update Cliente set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?,celular=?,email=?,tipodevia=?,estado=?,cidade=?,cep=?,limite=?,tipopessoa=?,rg=?,cpf=?,datanascimento=?,cnpj=?,inscri=? where id= "+cl.getId();
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
@@ -111,13 +116,17 @@ public class ClienteDao {
         pst.setString(8,cl.getEmail());
         pst.setString(9,cl.getTipodevia());
         pst.setString(10,cl.getEstado());
-        pst.setString(11,String.valueOf( cl.getCEP()));
-        pst.setString(12,String.valueOf(cl.getLimite()));
-        pst.setString(12,String.valueOf(cl.getCnpj()));
-        pst.setString(14,String.valueOf(cl.getInscriçãoestadual()));
+        pst.setString(11,cl.getCidade());
+        pst.setString(12,String.valueOf( cl.getCEP()));
+        pst.setString(13,String.valueOf(cl.getLimite()));
+        pst.setString(14,cl.getTipopessoa());
+        pst.setString(15,"");
+        pst.setString(16,"");
+        pst.setString(17,"");
+        pst.setString(18,cl.getCnpj());
+        pst.setString(19,cl.getInscriçãoestadual());
         pst.execute();
         pst.close();
-
     }
   public void Excluir(CadastroClienteFisica cl)throws SQLException{
      

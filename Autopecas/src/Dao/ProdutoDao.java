@@ -19,9 +19,6 @@ public class ProdutoDao {
     String sql;
     
     public void salvar(CadastroProduto cl) throws SQLException {
-
-        
-                                    
         sql = "INSERT INTO Produto values (?,?,?,?,?)";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  

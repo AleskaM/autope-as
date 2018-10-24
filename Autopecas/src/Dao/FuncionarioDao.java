@@ -29,7 +29,7 @@ public class FuncionarioDao {
 
         
                                     
-        sql = "INSERT INTO Funcionario values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO Funcionario values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
@@ -46,7 +46,6 @@ public class FuncionarioDao {
         pst.setString(13,cl.getTipodevia());
         pst.setString(14,cl.getEstado());
         pst.setString(15,cl.getCep());
-        pst.setString(16,cl.getCidade());
         pst.execute();
         pst.close();
 

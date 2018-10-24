@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
+import Dao.ProdutoDao;
+import Model.CadastroProduto;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,11 +18,12 @@ import javax.swing.JOptionPane;
  * @author Gabriel
  */
 public class TelaPeças extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form CadastroProduto
-     */
+  CadastroProduto produto;
+  ProdutoDao pt;
+   
     public TelaPeças() {
+        pt = new ProdutoDao();
+        produto= new CadastroProduto();
         initComponents();
         centralizarComponente();
     }
@@ -63,9 +68,15 @@ public class TelaPeças extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Quantidade:");
 
+        TxQtdProd.setEditable(false);
+
         jLabel4.setText("Preço Pago:");
 
+        TxPrecoProd.setEditable(false);
+
         jLabel5.setText("Preço Venda Unitario:");
+
+        TxPrecoProdVenda.setEditable(false);
 
         BtNovo.setText("Novo");
         BtNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -129,20 +140,19 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel4)
-                                                .addComponent(TxPrecoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(TxPrecoProdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel5)))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(66, 66, 66)
-                                            .addComponent(BtAlterar)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(BtExcluir))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(TxPrecoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TxPrecoProdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(66, 66, 66)
+                                        .addComponent(BtAlterar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(BtExcluir)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(BtNovo)
@@ -217,13 +227,32 @@ public class TelaPeças extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor preencha todos os campos");
         }
         else{
-            JOptionPane.showMessageDialog(null,"Cadastro de produto realizado com susseso!");
-            limpar();
+            produto = new CadastroProduto();
+            produto.setDescriprod(TxDescreveProduto.getText());
+            produto.setQtdprod(Integer.valueOf(TxQtdProd.getText()));
+            produto.setPrecopag(Float.valueOf(TxPrecoProd.getText()));
+            produto.setPrecovenda(Float.valueOf(TxPrecoProdVenda.getText()));
+           
+            try {
+                JOptionPane.showMessageDialog(null,""+produto.getDescriprod());
+                 pt.salvar(produto);
+                 JOptionPane.showMessageDialog(null,"Cadastro de produto realizado com susseso!");
+                 limpar();
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
         }
     }//GEN-LAST:event_BtSalvarActionPerformed
 
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
         BtSalvar.setEnabled(true);
+        TxDescreveProduto.setEditable(true);
+        TxPrecoProd.setEditable(true);
+        TxPrecoProdVenda.setEditable(true);
+        TxQtdProd.setEditable(true);
+        
     }//GEN-LAST:event_BtNovoActionPerformed
 public void limpar(){
     TxDescreveProduto.setText("");
