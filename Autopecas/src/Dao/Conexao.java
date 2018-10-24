@@ -7,15 +7,15 @@ import java.sql.SQLException;
 
 public class Conexao implements Serializable {
 
-    private static Conexao conexao = null;
-    private static Connection connection;
+    public static Conexao conexao = null;
+    public static Connection connection;
     private String usuario;
     private String senha;
     private String url;
 
-    private Conexao() {
+    public Conexao() {
         usuario = "root";
-        senha = "masterkey";
+        senha = "123456";
         url = "jdbc:mysql://localhost:3306/sistema";
 
         try {

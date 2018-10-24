@@ -22,7 +22,7 @@ public class ClienteDao {
     String sql;
     CadastroCliente cp = new CadastroCliente();
    public void salvar(CadastroClienteFisica cl) throws SQLException {
-        sql = "insert into Cliente values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sql = "insert into Cliente values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());
@@ -34,13 +34,15 @@ public class ClienteDao {
         pst.setString(8,cl.getEmail());
         pst.setString(9,cl.getTipodevia());
         pst.setString(10,cl.getEstado());
-        pst.setString(11,String.valueOf( cl.getCEP()));
-        pst.setString(12,String.valueOf(cl.getLimite()));
-        pst.setString(13,cl.getRg());
-        pst.setString(14,String.valueOf(cl.getCpf()));
-        pst.setString(15,(cl.getDatanascimento()));
-        pst.setString(16,"");
-        pst.setString(17,"");
+        pst.setString(11,cl.getCidade());
+        pst.setString(12,String.valueOf( cl.getCEP()));
+        pst.setString(13,String.valueOf(cl.getLimite()));
+        pst.setString(14,cl.getTipopessoa());
+        pst.setString(15,cl.getRg());
+        pst.setString(16,String.valueOf(cl.getCpf()));
+        pst.setString(17,(cl.getDatanascimento()));
+        pst.setString(18,"");
+        pst.setString(19,"");
         pst.execute();
         pst.close();
 

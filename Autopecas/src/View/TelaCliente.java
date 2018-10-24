@@ -21,6 +21,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 import Dao.ClienteDao;
+import Dao.Conexao;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 public class TelaCliente extends javax.swing.JInternalFrame {
@@ -41,6 +47,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
        
       
         initComponents();
+        Show_Clientes();
         BtSalvarCli.setEnabled(false);
         BtAlterarCli.setEnabled(false);
         TipodeViaCli.setEnabled(false);
@@ -241,13 +248,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "ID", "nome", "endereco", "bairro"
             }
         ));
         jScrollPane1.setViewportView(tblCliente);
@@ -811,7 +815,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             cadcliente.setComplemento(TxComplementoCli.getText());
             cadcliente.setCidade(TxCidadeCli.getText());
             cadcliente.setLimite(Float.valueOf(TxLimiteCli.getText()));
+            cadcliente.setTipodevia(String.valueOf(TipodeViaCli.getSelectedItem()));
+            cadcliente.setEmail(TxEmailCli.getText());
+            cadcliente.setCEP(TxCepCli.getText().replace("-",""));
             cadcliente.setEndereço(TxEndereçoCli.getText());
+            cadcliente.setEstado(String.valueOf(TxEstadoCli.getSelectedItem()));
             cadcliente.setBairro(TxBairroCli.getText());
             cadcliente.setTelefone((TxTelCli.getText().replace("(","").replace(")","").replace("-","")));
             cadcliente.setCelular(TxCelCli.getText().replace("(","").replace(")","").replace("-",""));
@@ -821,7 +829,9 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             try {
                 CadCli.salvar(cadcliente);
                 JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
-                
+                limpar();
+                limpaTabela();
+                Show_Clientes();
               
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -842,7 +852,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             cadjudi.setComplemento(TxComplementoCli.getText());
             cadjudi.setCidade(TxCidadeCli.getText());
             cadjudi.setLimite(Float.valueOf(TxLimiteCli.getText()));
+            cadjudi.setTipodevia(String.valueOf(TipodeViaCli.getSelectedItem()));
+            cadjudi.setEmail(TxEmailCli.getText());
+            cadjudi.setCEP(TxCepCli.getText().replace("-",""));
             cadjudi.setEndereço(TxEndereçoCli.getText());
+            cadjudi.setEstado(String.valueOf(TxEstadoCli.getSelectedItem()));
             cadjudi.setBairro(TxBairroCli.getText());
             cadjudi.setTelefone((TxTelCli.getText().replace("(","").replace(")","").replace("-","")));
             cadjudi.setCelular(TxCelCli.getText().replace("(","").replace(")","").replace("-",""));
@@ -862,6 +876,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtSalvarCliActionPerformed
 
     public void limpar(){
+        
             TxNomeCli.setText("");
             TxEndereçoCli.setText("");
             TxComplementoCli.setText("");
@@ -877,8 +892,13 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             TxLimiteCli.setText("");
             TxCepCli.setText("");
             TxTipoPessoa.setSelectedItem("Selecione");
+            TxCpfCli.setText("");
+            TxRGCli.setText("");
+            TxDataNascimento.setText("");
+            TxCnpj.setText("");
+            TxIdEstadual.setText("");
   
-
+            TxLimiteCli.setEditable(false);
             TxNomeCli.setEditable(false);
             TxEndereçoCli.setEditable(false);
             TxComplementoCli.setEditable(false);
@@ -891,7 +911,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             TxCidadeCli.setEditable(false);
             TxCepCli.setEditable(false);
             TxTipoPessoa.setEnabled(false);
-          
+             TxCpfCli.setEditable(false);
+            TxRGCli.setEditable(false);
+            TxDataNascimento.setEditable(false);
+            TxCnpj.setEditable(false);
+            TxIdEstadual.setEditable(false);
             BtSalvarCli.setEnabled(false);
             BtAlterarCli.setEnabled(false);
             BtBuscarCli.setEnabled(false);
@@ -1029,7 +1053,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private void jTabbedPane2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPane2AncestorAdded
     
     }//GEN-LAST:event_jTabbedPane2AncestorAdded
-  public void atualizarTabela(){
+ /* public void atualizarTabela(){
     cad= new CadastroCliente();
     try{
         listaCliente=CadCli.ListaCliente();
@@ -1072,7 +1096,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             
             
       
-   }
+   }*/
     private void TxTipoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTipoPessoaActionPerformed
 
     if( TxTipoPessoa.getSelectedIndex() == 1)
@@ -1132,6 +1156,67 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         TxCpfConsulta.setEditable(true);
     }//GEN-LAST:event_BtLimparCliActionPerformed
   
+    public Connection getConnection(){
+        Connection con;
+        try{
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema","root","123456");
+        return con;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+      
+        
+    }
+    public ArrayList<CadastroCliente>getLista(){
+        ArrayList<CadastroCliente>Lista = new ArrayList<CadastroCliente>();
+         Conexao con = new Conexao();
+        String sql;
+       PreparedStatement pst;
+         sql="select *from Cliente ";
+      
+        
+        try{
+            
+         pst=Conexao.getInstance().prepareStatement(sql);
+         ResultSet rs= pst.executeQuery();
+         CadastroCliente cadc;
+            while(rs.next()){
+                cadc= new  CadastroCliente(rs.getInt("idCliente") , rs.getString("nome") , 
+                rs.getString("endereco") ,rs.getString("complemento")
+               ,rs.getString("bairro"),rs.getString("cidade"),
+                rs.getString("telefone"),rs.getString("celular"),
+                rs.getString("email"),rs.getString("tipodevia")
+               ,rs.getString("estado"),rs.getString("cep"),rs.getFloat("limite")
+               ,rs.getString("tipopessoa"));
+                System.out.println(""+cadc.getNome());
+                Lista.add(cadc);
+               
+            }
+        }catch(Exception e){
+              e.printStackTrace();
+              
+        }
+        return Lista;
+    }
+    public void Show_Clientes(){
+        ArrayList<CadastroCliente>list = getLista();
+        DefaultTableModel model = (DefaultTableModel)tblCliente.getModel();
+        Object[]row= new Object[4];
+        for(int i=0; i < list.size();i++){
+            row[0]=list.get(i).getId();
+            row[1]=list.get(i).getNome();
+            row[2]=list.get(i).getEndereço();
+            row[3]=list.get(i).getBairro();
+            model.addRow(row);
+        }
+        }
+    
+    public void limpaTabela(){
+        DefaultTableModel model =(DefaultTableModel)tblCliente.getModel();
+        model.setNumRows(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterarCli;
     private javax.swing.JButton BtBuscarCli;
