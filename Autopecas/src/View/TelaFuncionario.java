@@ -119,9 +119,9 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         TxNomeF = new javax.swing.JTextField();
         BtIncluirF = new javax.swing.JButton();
         BtSalvarF = new javax.swing.JButton();
-        BtExcluir = new javax.swing.JButton();
         BtAlterarF = new javax.swing.JButton();
         BtEditar = new javax.swing.JButton();
+        BtExcluir = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -271,6 +271,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         );
 
         jTabbedPane1.addTab("Consulta", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane2.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -505,44 +507,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 
         TxNomeF.setEditable(false);
 
-        BtIncluirF.setText("Incluir");
-        BtIncluirF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtIncluirFActionPerformed(evt);
-            }
-        });
-
-        BtSalvarF.setText("Salvar");
-        BtSalvarF.setToolTipText("");
-        BtSalvarF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtSalvarFActionPerformed(evt);
-            }
-        });
-
-        BtExcluir.setText("Excluir");
-        BtExcluir.setEnabled(false);
-        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtExcluirActionPerformed(evt);
-            }
-        });
-
-        BtAlterarF.setText("Alterar");
-        BtAlterarF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtAlterarFActionPerformed(evt);
-            }
-        });
-
-        BtEditar.setText("Editar");
-        BtEditar.setEnabled(false);
-        BtEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtEditarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -552,25 +516,12 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(jTabbedPane2)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(TxIdF, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(TxNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(BtIncluirF)
-                                .addGap(57, 57, 57)
-                                .addComponent(BtSalvarF)
-                                .addGap(42, 42, 42)
-                                .addComponent(BtAlterarF)
-                                .addGap(47, 47, 47)
-                                .addComponent(BtEditar)
-                                .addGap(33, 33, 33)
-                                .addComponent(BtExcluir)))
+                            .addComponent(jLabel2)
+                            .addComponent(TxIdF, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(TxNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -587,14 +538,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(TxNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtSalvarF)
-                    .addComponent(BtExcluir)
-                    .addComponent(BtIncluirF)
-                    .addComponent(BtAlterarF)
-                    .addComponent(BtEditar))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -605,27 +549,55 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 410));
+
+        BtIncluirF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-add-48.png"))); // NOI18N
+        BtIncluirF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtIncluirFActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtIncluirF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 50));
+
+        BtSalvarF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-save-close-48.png"))); // NOI18N
+        BtSalvarF.setToolTipText("");
+        BtSalvarF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSalvarFActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtSalvarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 60, 50));
+
+        BtAlterarF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-update-48.png"))); // NOI18N
+        BtAlterarF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAlterarFActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtAlterarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 60, 50));
+
+        BtEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-edit-file-48 (1).png"))); // NOI18N
+        BtEditar.setEnabled(false);
+        BtEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEditarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 60, 50));
+
+        BtExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-delete-bin-48.png"))); // NOI18N
+        BtExcluir.setEnabled(false);
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 60, 50));
 
         jTabbedPane1.addTab("Manutenção", jPanel2);
 
@@ -640,7 +612,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
