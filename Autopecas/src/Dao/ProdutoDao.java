@@ -35,13 +35,12 @@ public class ProdutoDao {
 
       
                                     
-        sql = "update Produto set descricao=? ,qtdprod=?,precopag=?,precovenda=? where id= "+cl.getCodproduto();
+        sql = "update Produto set descricao=?,qtdprod=?,precopag=?,precovenda=? where idproduto= "+cl.getCodproduto();
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setInt(1,0);  
-        pst.setString(2,cl.getDescriprod());
-        pst.setInt(3,(cl.getQtdprod()));
-        pst.setFloat(4,(cl.getPrecopag()));
-        pst.setFloat(5,cl.getPrecovenda());
+        pst.setString(1,cl.getDescriprod());
+        pst.setInt(2,(cl.getQtdprod()));
+        pst.setFloat(3,(cl.getPrecopag()));
+        pst.setFloat(4,cl.getPrecovenda());
         pst.execute();
         pst.close();
 

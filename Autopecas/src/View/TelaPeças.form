@@ -85,6 +85,8 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                               <Component id="BtAlterar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="BtEditar" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="BtExcluir" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -137,6 +139,7 @@
                           <Component id="BtSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="297" max="-2" attributes="0"/>
@@ -214,12 +217,18 @@
                 <Property name="text" type="java.lang.String" value="Alterar"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtAlterarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BtExcluir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtExcluirActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -266,6 +275,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblClienteMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tblCliente = new javax.swing.JTable(){&#xa;   public boolean isCellEditable(int rowIndex,int colIndex){&#xa;    return false;&#xa;     }&#xa;&#xa;};"/>
                   </AuxValues>
@@ -278,6 +290,16 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtPesquisarProdActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="BtEditar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtEditarMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtEditarActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -121,6 +121,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         BtSalvarF = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
         BtAlterarF = new javax.swing.JButton();
+        BtEditar = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -212,6 +213,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 "Id", "Nome", "Endereco", "Bairro"
             }
         ));
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCliente);
 
         jLabel32.setText("Cód Funcionário");
@@ -242,7 +248,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(106, 106, 106))
+                        .addGap(87, 87, 87))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel32)
@@ -254,7 +260,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                         .addComponent(TxNomeConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(66, 66, 66))
         );
 
         jTabbedPane1.addTab("Consulta", jPanel1);
@@ -508,6 +514,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         });
 
         BtExcluir.setText("Excluir");
+        BtExcluir.setEnabled(false);
         BtExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtExcluirActionPerformed(evt);
@@ -518,6 +525,14 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         BtAlterarF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtAlterarFActionPerformed(evt);
+            }
+        });
+
+        BtEditar.setText("Editar");
+        BtEditar.setEnabled(false);
+        BtEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEditarActionPerformed(evt);
             }
         });
 
@@ -539,13 +554,15 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel12)
                                     .addComponent(TxNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
+                                .addGap(35, 35, 35)
                                 .addComponent(BtIncluirF)
-                                .addGap(77, 77, 77)
+                                .addGap(57, 57, 57)
                                 .addComponent(BtSalvarF)
-                                .addGap(88, 88, 88)
+                                .addGap(42, 42, 42)
                                 .addComponent(BtAlterarF)
-                                .addGap(59, 59, 59)
+                                .addGap(47, 47, 47)
+                                .addComponent(BtEditar)
+                                .addGap(33, 33, 33)
                                 .addComponent(BtExcluir)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -568,7 +585,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(BtSalvarF)
                     .addComponent(BtExcluir)
                     .addComponent(BtIncluirF)
-                    .addComponent(BtAlterarF))
+                    .addComponent(BtAlterarF)
+                    .addComponent(BtEditar))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -682,7 +700,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 public void limpar(){
     
     
-              TxNomeF.setText("");
+                TxNomeF.setText("");
                 TxEndereçoF.setText("");
                 TxComplementoF.setText("");
                 TxBairroF.setText("");
@@ -713,24 +731,13 @@ public void limpar(){
                 TxFunc.setEditable(false);
                 TxSen.setEditable(false);
                 BtSalvarF.setEnabled(false);
+                BtExcluir.setEnabled(false);
+                BtAlterarF.setEnabled(false);
                
     
 }
     private void BtAlterarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarFActionPerformed
-        TxNomeF.setEditable(true);
-        TxEndereçoF.setEditable(true);
-        TxComplementoF.setEditable(true);
-        TxBairroF.setEditable(true);
-        TxTelF.setEditable(true);
-        TxCelF.setEditable(true);
-        TxEmailF.setEditable(true);
-        TxEstadoF.setEnabled(true);
-        TipodeViaF.setEnabled(true);
-        TxCidadeF.setEditable(true);
-        TxCepF.setEditable(true);
-         TxUsu.setEditable(true);
-        TxSen.setEditable(true);
-        TxFunc.setEditable(true);
+    
         
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente alterar?", "Confirmação",JOptionPane.YES_NO_OPTION);
         if(op==0){
@@ -746,7 +753,7 @@ public void limpar(){
         }
          
         else{
-            JOptionPane.showMessageDialog(null,"Produto Alterado com sucesso!");
+         
             cad.setId(Integer.valueOf(TxIdF.getText()));
             cad.setNome(TxNomeF.getText());
             cad.setFunção(TxFunc.getText());
@@ -764,32 +771,20 @@ public void limpar(){
             cad.setCep(TxCepF.getText().replace("-",""));
             try {
                 Dao_cad.Alterar(cad);
+                 JOptionPane.showMessageDialog(null,"Produto Alterado com sucesso!");
+                   limpar();
+                   limpaTabela();
+                   Show_Clientes();
             } catch (SQLException ex) {
                 Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            limpar();
+           
             
          }
         
         
         }
-        TxNomeF.setEditable(true);
-        TxEndereçoF.setEditable(true);
-        TxComplementoF.setEditable(true);
-        TxBairroF.setEditable(true);
-        TxTelF.setEditable(true);
-        TxCelF.setEditable(true);
-        TxEmailF.setEditable(true);
-        TxEstadoF.setEnabled(true);
-        TipodeViaF.setEnabled(true);
-        TxCidadeF.setEditable(true);
-        TxCepF.setEditable(true);
-        BtSalvarF.setEnabled(true);
        
-        TxUsu.setEditable(true);
-        TxSen.setEditable(true);
-        TxFunc.setEditable(true);
-        BtSalvarF.setEnabled(true);
     }//GEN-LAST:event_BtAlterarFActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
@@ -801,6 +796,8 @@ public void limpar(){
        try {
            Dao_cad.Excluir(cad);
            limpar();
+           limpaTabela();
+           Show_Clientes();
        } catch (SQLException ex) {
            Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
        }
@@ -845,6 +842,77 @@ public void limpar(){
     private void BtSairConsultaFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSairConsultaFActionPerformed
         this.dispose();
     }//GEN-LAST:event_BtSairConsultaFActionPerformed
+
+    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        BtExcluir.setEnabled(true);
+        BtEditar.setEnabled(true);
+        String id =""+tblCliente.getValueAt(tblCliente.getSelectedRow(),0);
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select *from Funcionario where idFuncionario= "+id;
+       try {
+        pst=Conexao.getInstance().prepareStatement(sql);
+        ResultSet rs= pst.executeQuery();
+      while(rs.next()){
+          TxIdF.setText(String.valueOf(rs.getInt("idFuncionario")));
+          TxNomeF.setText(rs.getString("nome"));
+          TxEndereçoF.setText(rs.getString("endereco"));
+          TxComplementoF.setText(rs.getString("complemento"));
+          TxBairroF.setText(rs.getString("bairro"));
+          TxCidadeF.setText(rs.getString("cidade"));
+          TxTelF.setText(rs.getString("telefone"));
+          TxCelF.setText(rs.getString("celular"));
+          TxEmailF.setText(rs.getString("email"));
+          TipodeViaF.setSelectedItem(rs.getString("tipodevia"));
+          TxEstadoF.setSelectedItem((rs.getString("estado")));
+          TxCepF.setText(rs.getString("cep"));
+          TxUsu.setText(rs.getString("usuario"));
+          TxSen.setText(rs.getString("senha"));
+          TxFunc.setText(rs.getString("funcao"));
+        
+          
+          
+      }
+       } catch (SQLException ex) {
+           Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    
+    }//GEN-LAST:event_tblClienteMouseClicked
+
+    private void BtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEditarActionPerformed
+               BtAlterarF.setEnabled(true);
+                TxNomeF.setEditable(true);
+                TxEndereçoF.setEditable(true);
+                TxComplementoF.setEditable(true);
+                TxBairroF.setEditable(true);
+                TxTelF.setEditable(true);
+                TxCelF.setEditable(true);
+                TxEmailF.setEditable(true);
+                TxEstadoF.setEnabled(true);
+                TipodeViaF.setEnabled(true);
+                TxCidadeF.setEditable(true);
+                TxCepF.setEditable(true);
+                TxUsu.setEditable(true);
+                TxFunc.setEditable(true);
+                TxSen.setEditable(true);
+                TxNomeF.setEnabled(true);
+                TxEndereçoF.setEnabled(true);
+                TxComplementoF.setEnabled(true);
+                TxBairroF.setEnabled(true);
+                TxTelF.setEnabled(true);
+                TxCelF.setEnabled(true);
+                TxEmailF.setEnabled(true);
+                TxEstadoF.setEnabled(true);
+                TipodeViaF.setEnabled(true);
+                TxCidadeF.setEnabled(true);
+                TxCepF.setEnabled(true);
+                TxUsu.setEnabled(true);
+                TxFunc.setEnabled(true);
+                TxSen.setEnabled(true);
+                BtEditar.setEnabled(false);
+                BtExcluir.setEnabled(false);
+    }//GEN-LAST:event_BtEditarActionPerformed
 
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -951,6 +1019,7 @@ public void limpar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterarF;
+    private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtIncluirF;
     private javax.swing.JButton BtLimparF;

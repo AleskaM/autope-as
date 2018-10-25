@@ -116,7 +116,6 @@
                               <EmptySpace pref="162" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="BtPesquisarConsulta" max="32767" attributes="0"/>
-                                  <Component id="BtSairConsulta" max="32767" attributes="0"/>
                                   <Component id="BtLimparCli" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
@@ -144,18 +143,10 @@
                                   </Group>
                                   <Component id="BtLimparCli" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="TxNomeConsulta" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="BtSairConsulta" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxNomeConsulta" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="TxCpfConsulta" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -205,14 +196,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtPesquisarConsultaActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="BtSairConsulta">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Sair"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtSairConsultaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JFormattedTextField" name="TxCnpjConsulta">
@@ -335,7 +318,7 @@
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="BtEditar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="TxExcluir" min="-2" max="-2" attributes="0"/>
+                              <Component id="BtExcluir" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -369,7 +352,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BtSalvarCli" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtAlterarCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtIncluirCli1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -709,6 +692,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel21">
@@ -983,12 +967,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtAlterarCliActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="TxExcluir">
+            <Component class="javax.swing.JButton" name="BtExcluir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxExcluirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtExcluirActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">

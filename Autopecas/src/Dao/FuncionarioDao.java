@@ -51,27 +51,22 @@ public class FuncionarioDao {
 
     }
    public void Alterar(CadastroUsuário cl) throws SQLException {
-
-      
-                                    
-        sql = "update Funcionario set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?"
-              + ",celular=?,email=?,funcao=?,usuario=?,senha=?,tipodevia=?,estado=? cep=? where  idFuncionario= "+cl.getId();
+       sql = "update Funcionario set nome=? ,endereco=?,complemento=?,bairro=?,cidade=?,telefone=?,celular=?,email=?,funcao=?,usuario=?,senha=?,tipodevia=?,estado=?,cep=? where idFuncionario= "+cl.getId();
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setInt(1,0);  
-        pst.setString(2,cl.getNome());
-        pst.setString(3,cl.getEndereço());
-        pst.setString(4,cl.getComplemento());
-        pst.setString(5,cl.getBairro());
-        pst.setString(6,cl.getCidade());
-        pst.setString(7,String.valueOf(cl.getTelefone()));
-        pst.setString(8,String.valueOf(cl.getCelular()));
-        pst.setString(9,cl.getEmail());
-        pst.setString(10,cl.getFunção());
-        pst.setString(11,cl.getUsuario());
-        pst.setString(12,cl.getSenha());
-        pst.setString(13,cl.getTipodevia());
-        pst.setString(14,cl.getEstado());
-        pst.setString(15,cl.getCep());
+        pst.setString(1,cl.getNome());
+        pst.setString(2,cl.getEndereço());
+        pst.setString(3,cl.getComplemento());
+        pst.setString(4,cl.getBairro());
+        pst.setString(5,cl.getCidade());
+        pst.setString(6,String.valueOf(cl.getTelefone()));
+        pst.setString(7,String.valueOf(cl.getCelular()));
+        pst.setString(8,cl.getEmail());
+        pst.setString(9,cl.getFunção());
+        pst.setString(10,cl.getUsuario());
+        pst.setString(11,cl.getSenha());
+        pst.setString(12,cl.getTipodevia());
+        pst.setString(13,cl.getEstado());
+        pst.setString(14,cl.getCep());
         pst.execute();
         pst.close();
 

@@ -63,6 +63,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
         BtPesquisarProd = new javax.swing.JButton();
+        BtEditar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastro de Produto");
@@ -102,9 +103,19 @@ public class TelaPeças extends javax.swing.JInternalFrame {
 
         BtAlterar.setText("Alterar");
         BtAlterar.setEnabled(false);
+        BtAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAlterarActionPerformed(evt);
+            }
+        });
 
         BtExcluir.setText("Excluir");
         BtExcluir.setEnabled(false);
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
 
         tblCliente = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
@@ -120,12 +131,30 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 "Id", "descricao", "Quantidade", "Preço Venda"
             }
         ));
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCliente);
 
         BtPesquisarProd.setText("Pesquisar");
         BtPesquisarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtPesquisarProdActionPerformed(evt);
+            }
+        });
+
+        BtEditar.setText("Editar");
+        BtEditar.setEnabled(false);
+        BtEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtEditarMouseClicked(evt);
+            }
+        });
+        BtEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEditarActionPerformed(evt);
             }
         });
 
@@ -161,6 +190,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(66, 66, 66)
                                         .addComponent(BtAlterar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(BtEditar)
                                         .addGap(18, 18, 18)
                                         .addComponent(BtExcluir)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -199,7 +230,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                     .addComponent(BtNovo)
                     .addComponent(BtSalvar)
                     .addComponent(BtAlterar)
-                    .addComponent(BtExcluir))
+                    .addComponent(BtExcluir)
+                    .addComponent(BtEditar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -240,8 +272,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
             produto = new CadastroProduto();
             produto.setDescriprod(TxDescreveProduto.getText());
             produto.setQtdprod(Integer.valueOf(TxQtdProd.getText()));
-            produto.setPrecopag(Float.valueOf(TxPrecoProd.getText()));
-            produto.setPrecovenda(Float.valueOf(TxPrecoProdVenda.getText()));
+            produto.setPrecopag(Float.valueOf(TxPrecoProd.getText().replace(",",".")));
+            produto.setPrecovenda(Float.valueOf(TxPrecoProdVenda.getText().replace(",",".")));
            
             try {
                 
@@ -266,18 +298,108 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         TxQtdProd.setEditable(true);
         
     }//GEN-LAST:event_BtNovoActionPerformed
+
+    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        BtExcluir.setEnabled(true);
+        BtEditar.setEnabled(true);
+        String id =""+tblCliente.getValueAt(tblCliente.getSelectedRow(),0);
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select *from Produto where idproduto= "+id;
+       try {
+        pst=Conexao.getInstance().prepareStatement(sql);
+        ResultSet rs= pst.executeQuery();
+      while(rs.next()){
+          TxCodProduto.setText(String.valueOf(rs.getInt("idproduto")));
+          TxDescreveProduto.setText(rs.getString("descricao"));
+          TxPrecoProd.setText(rs.getString("precopag"));
+          TxPrecoProdVenda.setText(rs.getString("precovenda"));
+          TxQtdProd.setText(rs.getString("qtdprod"));
+          
+       
+        
+          
+          
+      }
+       } catch (SQLException ex) {
+           Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    
+    }//GEN-LAST:event_tblClienteMouseClicked
+
+    private void BtEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEditarMouseClicked
+      BtAlterar.setEnabled(true);
+      TxDescreveProduto.setEditable(true);
+      TxPrecoProd.setEditable(true);
+      TxPrecoProdVenda.setEditable(true);
+      TxQtdProd.setEditable(true);
+    }//GEN-LAST:event_BtEditarMouseClicked
+
+    private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
+    if(TxDescreveProduto.getText().equals("") ||  TxPrecoProd.getText().equals("") || TxPrecoProdVenda.getText().equals("") || TxQtdProd.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Por favor preencha todos os campos");
+        }
+        else{
+            produto.setCodproduto(Integer.valueOf(TxCodProduto.getText()));
+            produto.setDescriprod(TxDescreveProduto.getText());
+            produto.setQtdprod(Integer.valueOf(TxQtdProd.getText()));
+            produto.setPrecopag(Float.valueOf(TxPrecoProd.getText().replace(",",".")));
+            produto.setPrecovenda(Float.valueOf(TxPrecoProdVenda.getText().replace(",",".")));
+           
+            try {
+                System.out.println(""+produto.getDescriprod());
+                 pt.Alterar(produto);
+                 JOptionPane.showMessageDialog(null,"Produto Alterado com susseso!");
+                 limpaTabela();
+                 Show_Clientes();
+                 limpar();
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }
+    }//GEN-LAST:event_BtAlterarActionPerformed
+
+    private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+     produto = new CadastroProduto();
+     produto.setCodproduto(Integer.valueOf(TxCodProduto.getText()));
+      try {
+          pt.Excluir(produto);
+          BtExcluir.setEnabled(false);
+          limpar();
+          limpaTabela();
+          Show_Clientes();
+      } catch (SQLException ex) {
+          Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }//GEN-LAST:event_BtExcluirActionPerformed
+
+    private void BtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEditarActionPerformed
+     BtAlterar.setEnabled(true);
+     BtExcluir.setEnabled(false);
+     BtEditar.setEnabled(false);
+    TxDescreveProduto.setEditable(true);
+    TxPrecoProd.setEditable(true);
+    TxPrecoProdVenda.setEditable(true);
+    TxQtdProd.setEditable(true);
+     
+     
+    }//GEN-LAST:event_BtEditarActionPerformed
 public void limpar(){
     TxDescreveProduto.setText("");
     TxPrecoProd.setText("");
     TxPrecoProdVenda.setText("");
     TxQtdProd.setText("");
-    TxDescreveProduto.setEnabled(false);
-    TxPrecoProd.setEnabled(false);
-    TxPrecoProdVenda.setEnabled(false);
-    TxQtdProd.setEnabled(false);
+    TxDescreveProduto.setEditable(false);
+    TxPrecoProd.setEditable(false);
+    TxPrecoProdVenda.setEditable(false);
+    TxQtdProd.setEditable(false);
     BtNovo.setEnabled(true);
     BtSalvar.setEnabled(false);
     BtAlterar.setEnabled(false);
+    BtEditar.setEnabled(false);
    
             
 }
@@ -333,6 +455,7 @@ public void limpar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
+    private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtNovo;
     private javax.swing.JButton BtPesquisarProd;
