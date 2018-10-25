@@ -4,14 +4,20 @@
  * and open the template in the editor.
  */
 package View;
+import Dao.Conexao;
 import Dao.ProdutoDao;
 import Model.CadastroProduto;
+import Model.CadastroUsuário;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +31,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         pt = new ProdutoDao();
         produto= new CadastroProduto();
         initComponents();
+        Show_Clientes();
         centralizarComponente();
     }
 
@@ -54,7 +61,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         BtAlterar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         BtPesquisarProd = new javax.swing.JButton();
 
         setClosable(true);
@@ -99,18 +106,21 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         BtExcluir.setText("Excluir");
         BtExcluir.setEnabled(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;
+            }
+
+        };
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Id", "descricao", "Quantidade", "Preço Venda"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCliente);
 
         BtPesquisarProd.setText("Pesquisar");
         BtPesquisarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -190,8 +200,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                     .addComponent(BtSalvar)
                     .addComponent(BtAlterar)
                     .addComponent(BtExcluir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
@@ -234,9 +244,11 @@ public class TelaPeças extends javax.swing.JInternalFrame {
             produto.setPrecovenda(Float.valueOf(TxPrecoProdVenda.getText()));
            
             try {
-                JOptionPane.showMessageDialog(null,""+produto.getDescriprod());
+                
                  pt.salvar(produto);
                  JOptionPane.showMessageDialog(null,"Cadastro de produto realizado com susseso!");
+                 limpaTabela();
+                 Show_Clientes();
                  limpar();
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
@@ -269,6 +281,55 @@ public void limpar(){
    
             
 }
+  public ArrayList<CadastroProduto>getLista(){
+        ArrayList<CadastroProduto>Lista = new ArrayList<CadastroProduto>();
+         Conexao con = new Conexao();
+        String sql;
+       PreparedStatement pst;
+         sql="select *from Produto ";
+      
+        
+        try{
+            
+         pst=Conexao.getInstance().prepareStatement(sql);
+         ResultSet rs= pst.executeQuery();
+         CadastroProduto cadc;
+            while(rs.next()){
+                cadc= new  CadastroProduto(rs.getInt("idproduto") , rs.getString("descricao") , 
+                rs.getInt("qtdprod") ,rs.getFloat("precopag")
+               ,rs.getFloat("precovenda"));
+
+               
+                Lista.add(cadc);
+               
+            }
+        }catch(Exception e){
+              e.printStackTrace();
+              
+        }
+        return Lista;
+    }
+  
+   public void Show_Clientes(){
+        ArrayList<CadastroProduto>list = getLista();
+        DefaultTableModel model = (DefaultTableModel)tblCliente.getModel();
+        Object[]row= new Object[4];
+        for(int i=0; i < list.size();i++){
+            row[0]=list.get(i).getCodproduto();
+            row[1]=list.get(i).getDescriprod();
+            row[2]=list.get(i).getQtdprod();
+            row[3]=list.get(i).getPrecovenda();
+            model.addRow(row);
+           
+        }
+      tblCliente.getTableHeader().setReorderingAllowed(false);
+   
+      
+        }
+      public void limpaTabela(){
+        DefaultTableModel model =(DefaultTableModel)tblCliente.getModel();
+        model.setNumRows(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
@@ -289,6 +350,6 @@ public void limpar(){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCliente;
     // End of variables declaration//GEN-END:variables
 }

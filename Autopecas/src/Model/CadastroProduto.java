@@ -9,7 +9,7 @@ public class CadastroProduto {
     private int qtdprod;
     private float precopag;
     private float precovenda;
-    private String nomeforne;
+
     private String pesquisa;
 
     public int getCodproduto() {
@@ -52,13 +52,7 @@ public class CadastroProduto {
         this.precovenda = precovenda;
     }
 
-    public String getNomeforne() {
-        return nomeforne;
-    }
-
-    public void setNomeforne(String nomeforne) {
-        this.nomeforne = nomeforne;
-    }
+  
 
     public String getPesquisa() {
         return pesquisa;
@@ -71,13 +65,13 @@ public class CadastroProduto {
     
     
     
-    public CadastroProduto(int codproduto, String descriprod, int qtdprod, float precopag, float precovenda, String nomeforne) {
+    public CadastroProduto(int codproduto, String descriprod, int qtdprod, float precopag, float precovenda) {
         this.codproduto = codproduto;
         this.descriprod = descriprod;
         this.qtdprod = qtdprod;
         this.precopag = precopag;
         this.precovenda = precovenda;
-        this.nomeforne = nomeforne;
+      
     }
     
             

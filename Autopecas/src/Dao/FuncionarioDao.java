@@ -55,7 +55,7 @@ public class FuncionarioDao {
       
                                     
         sql = "update Funcionario set nome=? ,endereco=?,complemento=?,bairro=?,telefone=?"
-              + ",celular=?,email=?,funcao=?,usuario=?,senha=?,tipodevia=?,estado=? cep=? where id= "+cl.getId();
+              + ",celular=?,email=?,funcao=?,usuario=?,senha=?,tipodevia=?,estado=? cep=? where  idFuncionario= "+cl.getId();
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);  
         pst.setString(2,cl.getNome());

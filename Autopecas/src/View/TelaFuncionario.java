@@ -6,11 +6,13 @@
 package View;
 
 
+import Dao.Conexao;
 import Dao.FuncionarioDao;
-import Model.CadastroCliente;
 import Model.CadastroUsuário;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,6 +40,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         Dao_cad = new FuncionarioDao();
         listaCliente= new ArrayList();
         initComponents();
+        Show_Clientes();
         BtSalvarF.setEnabled(false);
         BtAlterarF.setEnabled(false);
         TipodeViaF.setEnabled(false);
@@ -195,15 +198,18 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tblCliente = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;
+            }
+
+        };
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Id", "Nome", "Endereco", "Bairro"
             }
         ));
         jScrollPane2.setViewportView(tblCliente);
@@ -664,6 +670,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             try {
                 JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
                 Dao_cad.salvar(cad);
+                limpaTabela();
+                Show_Clientes();
             } catch (SQLException ex) {
                 Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -888,6 +896,58 @@ public void limpar(){
             
       
    }*/
+     public ArrayList<CadastroUsuário>getLista(){
+        ArrayList<CadastroUsuário>Lista = new ArrayList<CadastroUsuário>();
+         Conexao con = new Conexao();
+        String sql;
+       PreparedStatement pst;
+         sql="select *from Funcionario ";
+      
+        
+        try{
+            
+         pst=Conexao.getInstance().prepareStatement(sql);
+         ResultSet rs= pst.executeQuery();
+         CadastroUsuário cadc;
+            while(rs.next()){
+                cadc= new  CadastroUsuário(rs.getInt("idFuncionario") , rs.getString("nome") , 
+                rs.getString("endereco") ,rs.getString("complemento")
+               ,rs.getString("bairro"),rs.getString("cidade"),
+                rs.getString("telefone"),rs.getString("celular"),
+                rs.getString("email"),rs.getString("funcao")
+               ,rs.getString("usuario"),rs.getString("senha"),rs.getString("tipodevia")
+               ,rs.getString("estado"),rs.getString("cep"));
+              
+                Lista.add(cadc);
+               
+            }
+        }catch(Exception e){
+              e.printStackTrace();
+              
+        }
+        return Lista;
+    }
+       public void Show_Clientes(){
+        ArrayList<CadastroUsuário>list = getLista();
+        DefaultTableModel model = (DefaultTableModel)tblCliente.getModel();
+        Object[]row= new Object[4];
+        for(int i=0; i < list.size();i++){
+            row[0]=list.get(i).getId();
+            row[1]=list.get(i).getNome();
+            row[2]=list.get(i).getEndereço();
+            row[3]=list.get(i).getBairro();
+            model.addRow(row);
+           
+        }
+      tblCliente.getTableHeader().setReorderingAllowed(false);
+   
+      
+        }
+      public void limpaTabela(){
+        DefaultTableModel model =(DefaultTableModel)tblCliente.getModel();
+        model.setNumRows(0);
+    }
+       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterarF;
