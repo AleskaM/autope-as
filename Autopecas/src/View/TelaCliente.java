@@ -153,10 +153,15 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Cód Cliente");
 
+        TxConsultaId.setEditable(false);
+
         jLabel12.setText("Nome");
+
+        TxNomeConsulta.setEditable(false);
 
         jLabel13.setText("CPF");
 
+        TxCpfConsulta.setEditable(false);
         try {
             TxCpfConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -166,12 +171,14 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         jLabel14.setText("CNPJ");
 
         BtPesquisarConsulta.setText("Pesquisar");
+        BtPesquisarConsulta.setEnabled(false);
         BtPesquisarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtPesquisarConsultaActionPerformed(evt);
             }
         });
 
+        TxCnpjConsulta.setEditable(false);
         try {
             TxCnpjConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
@@ -180,6 +187,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         TxCnpjConsulta.setToolTipText("");
 
         BtLimparCli.setText("Limpar");
+        BtLimparCli.setEnabled(false);
         BtLimparCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtLimparCliActionPerformed(evt);
@@ -266,16 +274,16 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -707,9 +715,9 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                             .addComponent(TxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(27, 27, 27)
                         .addComponent(BtIncluirCli1)
-                        .addGap(48, 48, 48)
+                        .addGap(55, 55, 55)
                         .addComponent(BtSalvarCli)
                         .addGap(62, 62, 62)
                         .addComponent(BtAlterarCli)
@@ -737,7 +745,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     .addComponent(TxNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtSalvarCli)
@@ -893,7 +901,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtSalvarCliActionPerformed
 
     public void limpar(){
-        
+            TxIdCli.setText("");
             TxNomeCli.setText("");
             TxEndereçoCli.setText("");
             TxComplementoCli.setText("");
@@ -938,6 +946,28 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             BtBuscarCli.setEnabled(false);
     }
     private void BtIncluirCli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtIncluirCli1ActionPerformed
+           BtEditar.setEnabled(false);
+            TxIdCli.setText("");
+            TxNomeCli.setText("");
+            TxEndereçoCli.setText("");
+            TxComplementoCli.setText("");
+            TxBairroCli.setText("");
+            TxCidadeCli.setText("");
+            TxTelCli.setText("");
+            TxCelCli.setText("");
+            TxEmailCli.setText("");
+            TxCepCli.setText("");
+            TxEstadoCli.setSelectedItem("Selecione");
+            TipodeViaCli.setSelectedItem("Selecione");
+            TxEmailCli.setText("");
+            TxLimiteCli.setText("");
+            TxCepCli.setText("");
+            TxTipoPessoa.setSelectedItem("Selecione");
+            TxCpfCli.setText("");
+            TxRGCli.setText("");
+            TxDataNascimento.setText("");
+            TxCnpj.setText("");
+            TxIdEstadual.setText("");
         TxNomeCli.setEditable(true);
         TxEndereçoCli.setEditable(true);
         TxComplementoCli.setEditable(true);
@@ -1092,13 +1122,17 @@ public class TelaCliente extends javax.swing.JInternalFrame {
      }//GEN-LAST:event_TxCpfCliActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
-     if(TxTipoPessoa.getSelectedItem().equals("Física")){
+     int op = JOptionPane.showConfirmDialog(this, "Deseja realmente Excluir?", "Confirmação",JOptionPane.YES_NO_OPTION);
+        if(op==0){
+        if(TxTipoPessoa.getSelectedItem().equals("Física")){
          cadcliente.setId(Integer.parseInt((TxIdCli.getText())));
          try {
              CadCli.Excluir(cadcliente);
              limpar();
              limpaTabela();
              Show_Clientes();
+             BtEditar.setEnabled(false);
+             BtExcluir.setEnabled(false);
          } catch (SQLException ex) {
              Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -1124,6 +1158,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
              Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
          }
      }
+        }
+        
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     private void TxIdCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxIdCliActionPerformed
@@ -1161,9 +1197,26 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtEditarActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        BtAlterarCli.setEnabled(false);
         BtEditar.setEnabled(true);
        BtExcluir.setEnabled(true);
-       
+        TxNomeCli.setEditable(false);
+        TxEndereçoCli.setEditable(false);
+        TxComplementoCli.setEditable(false);
+        TxBairroCli.setEditable(false);
+        TxTelCli.setEditable(false);
+        TxCelCli.setEditable(false);
+        TxEmailCli.setEditable(false);
+        TxEstadoCli.setEnabled(false);
+        TipodeViaCli.setEnabled(false);
+        TxCidadeCli.setEditable(false);
+        TxCepCli.setEditable(false);
+         TxTipoPessoa.setEnabled(false);
+             TxCpfCli.setEditable(false);
+            TxRGCli.setEditable(false);
+            TxDataNascimento.setEditable(false);
+            TxCnpj.setEditable(false);
+            TxIdEstadual.setEditable(false);
         String id =""+tblCliente.getValueAt(tblCliente.getSelectedRow(),0);
        Conexao con = new Conexao();
        String sql;

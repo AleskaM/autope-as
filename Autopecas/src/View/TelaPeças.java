@@ -74,6 +74,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Descriçao do Produto:");
 
+        TxDescreveProduto.setEditable(false);
+
         jLabel3.setText("Quantidade:");
 
         TxQtdProd.setEditable(false);
@@ -139,6 +141,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblCliente);
 
         BtPesquisarProd.setText("Pesquisar");
+        BtPesquisarProd.setEnabled(false);
         BtPesquisarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtPesquisarProdActionPerformed(evt);
@@ -291,17 +294,29 @@ public class TelaPeças extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtSalvarActionPerformed
 
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
+        TxCodProduto.setText("");
+        TxDescreveProduto.setText("");
+        TxPrecoProd.setText("");
+        TxPrecoProdVenda.setText("");
+        TxQtdProd.setText("");
         BtSalvar.setEnabled(true);
         TxDescreveProduto.setEditable(true);
         TxPrecoProd.setEditable(true);
         TxPrecoProdVenda.setEditable(true);
         TxQtdProd.setEditable(true);
+        BtEditar.setEnabled(false);
+        BtExcluir.setEnabled(false);
         
     }//GEN-LAST:event_BtNovoActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
         BtExcluir.setEnabled(true);
         BtEditar.setEnabled(true);
+        TxDescreveProduto.setEditable(false);
+        TxPrecoProd.setEditable(false);
+        TxPrecoProdVenda.setEditable(false);
+        TxQtdProd.setEditable(false);
+        BtAlterar.setEnabled(false);
         String id =""+tblCliente.getValueAt(tblCliente.getSelectedRow(),0);
        Conexao con = new Conexao();
        String sql;
@@ -325,7 +340,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
        } catch (SQLException ex) {
            Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
        }
-    
+        
     }//GEN-LAST:event_tblClienteMouseClicked
 
     private void BtEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEditarMouseClicked
@@ -337,7 +352,9 @@ public class TelaPeças extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtEditarMouseClicked
 
     private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
-    if(TxDescreveProduto.getText().equals("") ||  TxPrecoProd.getText().equals("") || TxPrecoProdVenda.getText().equals("") || TxQtdProd.getText().equals("")){
+        int op = JOptionPane.showConfirmDialog(this, "Deseja realmente Alterar?", "Confirmação",JOptionPane.YES_NO_OPTION);
+        if(op==0){
+        if(TxDescreveProduto.getText().equals("") ||  TxPrecoProd.getText().equals("") || TxPrecoProdVenda.getText().equals("") || TxQtdProd.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Por favor preencha todos os campos");
         }
         else{
@@ -360,9 +377,12 @@ public class TelaPeças extends javax.swing.JInternalFrame {
             
             
         }
+        }
     }//GEN-LAST:event_BtAlterarActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+     int op = JOptionPane.showConfirmDialog(this, "Deseja realmente Excluir?", "Confirmação",JOptionPane.YES_NO_OPTION);
+        if(op==0){
      produto = new CadastroProduto();
      produto.setCodproduto(Integer.valueOf(TxCodProduto.getText()));
       try {
@@ -374,6 +394,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
       } catch (SQLException ex) {
           Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
       }
+        }
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     private void BtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEditarActionPerformed
@@ -388,6 +409,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
      
     }//GEN-LAST:event_BtEditarActionPerformed
 public void limpar(){
+    TxCodProduto.setText("");
     TxDescreveProduto.setText("");
     TxPrecoProd.setText("");
     TxPrecoProdVenda.setText("");

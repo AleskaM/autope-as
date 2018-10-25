@@ -155,6 +155,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setTitle("Manutenção");
 
         BtPesquisarConsultaF.setText("Pesquisar");
+        BtPesquisarConsultaF.setEnabled(false);
         BtPesquisarConsultaF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtPesquisarConsultaFActionPerformed(evt);
@@ -162,6 +163,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         });
 
         BtLimparF.setText("Limpar");
+        BtLimparF.setEnabled(false);
         BtLimparF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtLimparFActionPerformed(evt);
@@ -169,6 +171,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         });
 
         BtSairConsultaF.setText("Sair");
+        BtSairConsultaF.setEnabled(false);
         BtSairConsultaF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtSairConsultaFActionPerformed(evt);
@@ -222,7 +225,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 
         jLabel32.setText("Cód Funcionário");
 
+        TxConsultaF.setEditable(false);
+
         jLabel33.setText("Nome");
+
+        TxNomeConsultaF.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -633,14 +640,33 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtIncluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtIncluirFActionPerformed
+        BtExcluir.setEnabled(false);
+        BtEditar.setEnabled(false);
+        TxIdF.setText("");
+        TxNomeF.setText("");
+        TxEndereçoF.setText("");
+        TxComplementoF.setText("");
+        TxBairroF.setText("");
+        TxCidadeF.setText("");
+        TxTelF.setText("");
+        TxCelF.setText("");
+        TxEmailF.setText("");
+        TxCepF.setText("");
+        TxEstadoF.setSelectedItem("Selecione");
+        TipodeViaF.setSelectedItem("Selecione");
+        TxEmailF.setText("");
+        TxFunc.setText("");
+        TxUsu.setText("");
+        TxSen.setText("");
+        TxCepF.setText("");
         TxNomeF.setEditable(true);
         TxEndereçoF.setEditable(true);
         TxComplementoF.setEditable(true);
@@ -655,7 +681,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         TxFunc.setEditable(true);
         TxUsu.setEditable(true);
         TxSen.setEditable(true);
-   
+
         BtSalvarF.setEnabled(true);
 
     }//GEN-LAST:event_BtIncluirFActionPerformed
@@ -699,7 +725,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtSalvarFActionPerformed
 public void limpar(){
     
-    
+                TxIdF.setText("");
                 TxNomeF.setText("");
                 TxEndereçoF.setText("");
                 TxComplementoF.setText("");
@@ -798,6 +824,7 @@ public void limpar(){
            limpar();
            limpaTabela();
            Show_Clientes();
+           BtEditar.setEnabled(false);
        } catch (SQLException ex) {
            Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
        }
@@ -844,8 +871,23 @@ public void limpar(){
     }//GEN-LAST:event_BtSairConsultaFActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        TxNomeF.setEditable(false);
+        TxEndereçoF.setEditable(false);
+        TxComplementoF.setEditable(false);
+        TxBairroF.setEditable(false);
+        TxTelF.setEditable(false);
+        TxCelF.setEditable(false);
+        TxEmailF.setEditable(false);
+        TxEstadoF.setEnabled(false);
+        TipodeViaF.setEnabled(false);
+        TxCidadeF.setEditable(false);
+        TxCepF.setEditable(false);
+        TxUsu.setEditable(false);
+        TxFunc.setEditable(false);
+        TxSen.setEditable(false);
         BtExcluir.setEnabled(true);
         BtEditar.setEnabled(true);
+        BtAlterarF.setEnabled(false);
         String id =""+tblCliente.getValueAt(tblCliente.getSelectedRow(),0);
        Conexao con = new Conexao();
        String sql;
