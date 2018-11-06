@@ -22,6 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 import Dao.ClienteDao;
 import Dao.Conexao;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -36,7 +49,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
    CadastroClienteJuridica cadjudi;
    ClienteDao  CadCli;
    List<CadastroCliente>listaCliente;
-   
+   Document doc;
     
     /**
      * Creates new form TelaCliente
@@ -93,6 +106,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         BtPesquisarConsulta = new javax.swing.JButton();
         TxCnpjConsulta = new javax.swing.JFormattedTextField();
         BtLimparCli = new javax.swing.JButton();
+        BtRelatorio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -194,6 +208,13 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        BtRelatorio.setText("Relatorio");
+        BtRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtRelatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -208,9 +229,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel14)
                     .addComponent(TxCpfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtPesquisarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtLimparCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(BtPesquisarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtLimparCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtRelatorio))
                 .addGap(63, 63, 63))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(TxCnpjConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,20 +243,23 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(BtPesquisarConsulta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(TxConsultaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(BtPesquisarConsulta))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12))
-                    .addComponent(BtLimparCli, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TxNomeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(TxConsultaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12))
+                            .addComponent(BtLimparCli, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxNomeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13))
+                    .addComponent(BtRelatorio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TxCpfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1257,6 +1283,21 @@ public class TelaCliente extends javax.swing.JInternalFrame {
       
        
     }//GEN-LAST:event_tblClienteMouseClicked
+
+    private void BtRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRelatorioActionPerformed
+       String nomediretorio = null;
+        String nomepasta = "SRS"; // Informe o nome da pasta que armazenará o relatório
+        String separador = java.io.File.separator;
+        try {
+            nomediretorio = "C:" + separador + nomepasta;
+            if (!new File(nomediretorio).exists()) {
+                (new File(nomediretorio)).mkdir();
+            }
+            gerarDocumento();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BtRelatorioActionPerformed
   
     public Connection getConnection(){
         Connection con;
@@ -1322,10 +1363,75 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         DefaultTableModel model =(DefaultTableModel)tblCliente.getModel();
         model.setNumRows(0);
     }
-    public void cell(){
-  
-        
-      }
+    private void gerarDocumento()  {
+        try {
+       ArrayList<CadastroCliente>list = getLista();
+            
+            doc = new Document(PageSize.A4, 41.5f, 41.5f, 55.2f, 55.2f);
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/SRS/RelatorioCliente" + ".pdf"));
+            doc.open();
+
+            Font f1 = new Font(Font.HELVETICA, 14, Font.BOLD);
+            Font f2 = new Font(Font.HELVETICA, 12, Font.BOLD);
+            Font f3 = new Font(Font.HELVETICA, 12, Font.NORMAL);
+            Font f4 = new Font(Font.HELVETICA, 10, Font.BOLD);
+            Font f5 = new Font(Font.HELVETICA, 10, Font.NORMAL);
+
+            Paragraph titulo1 = new Paragraph("Universidade do Estado de Minas Gerais", f2);
+            titulo1.setAlignment(Element.ALIGN_CENTER);
+            titulo1.setSpacingAfter(10);
+
+            Paragraph titulo2 = new Paragraph("Relatório de Clientes", f1);
+            titulo2.setAlignment(Element.ALIGN_CENTER);
+            titulo2.setSpacingAfter(0);
+
+            PdfPTable tabela = new PdfPTable(new float[]{0.40f, 0.60f});
+            tabela.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tabela.setWidthPercentage(100f);
+
+            PdfPCell cabecalho1 = new PdfPCell(new Paragraph("Nome", f3));
+            //cabecalho1.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho1.setBorder(0);
+
+            PdfPCell cabecalho2 = new PdfPCell(new Paragraph("Endereço", f3));
+            //cabecalho2.setBackgroundColor(new Color(0xc0, 0xc0, 0xc0));
+            cabecalho2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+            cabecalho2.setBorder(0);
+
+            tabela.addCell(cabecalho1);
+            tabela.addCell(cabecalho2);
+            for (int i=0; i < list.size();i++) {
+                Paragraph p1 = new Paragraph(list.get(i).getNome(), f5);
+                p1.setAlignment(Element.ALIGN_JUSTIFIED);
+                PdfPCell col1 = new PdfPCell(p1);
+                col1.setBorder(0);
+                
+                Paragraph p2 = new Paragraph(list.get(i).getEndereço(), f5);
+                p2.setAlignment(Element.ALIGN_JUSTIFIED);
+                PdfPCell col2 = new PdfPCell(p2);
+                col2.setBorder(0);
+                tabela.addCell(col1);
+                tabela.addCell(col2);
+            }
+            
+            doc.add(titulo2);
+            doc.add(titulo1);
+            doc.add(tabela);
+            doc.close();
+            
+            JOptionPane.showMessageDialog(null, "Relatório salvo com sucesso");
+            String caminho = "C:/SRS/RelatorioCliente.pdf";
+            Desktop.getDesktop().open(new File(caminho));
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException exx) {
+            exx.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Documento de Requisitos aberto. Feche para gerar um novo.");
+        }
+
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterarCli;
     private javax.swing.JButton BtBuscarCli;
@@ -1334,6 +1440,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtIncluirCli1;
     private javax.swing.JButton BtLimparCli;
     private javax.swing.JButton BtPesquisarConsulta;
+    private javax.swing.JButton BtRelatorio;
     private javax.swing.JButton BtSalvarCli;
     private javax.swing.JPanel PnlPf;
     private javax.swing.JPanel PnlPj;
@@ -1396,4 +1503,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable tblCliente;
     // End of variables declaration//GEN-END:variables
+
+ 
 }

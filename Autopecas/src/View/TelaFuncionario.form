@@ -177,7 +177,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="BtPesquisarConsultaF" alignment="0" max="32767" attributes="0"/>
                               <Component id="BtLimparF" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BtSairConsultaF" alignment="0" max="32767" attributes="0"/>
+                              <Component id="BtRelatori" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
@@ -191,7 +191,7 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Component id="BtLimparF" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="BtSairConsultaF" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtRelatori" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -216,13 +216,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtLimparFActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BtSairConsultaF">
+                <Component class="javax.swing.JButton" name="BtRelatori">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Sair"/>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" value="Relatorio"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtSairConsultaFActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtRelatoriActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
