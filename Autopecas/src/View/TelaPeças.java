@@ -78,30 +78,43 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         BtPesquisarProd = new javax.swing.JButton();
         BtEditar = new javax.swing.JButton();
         BtRelatorio = new javax.swing.JButton();
+        BtCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastro de Produto");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("Cod:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         TxCodProduto.setEditable(false);
+        jPanel1.add(TxCodProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, 60, -1));
 
         jLabel2.setText("Descriçao do Produto:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 11, -1, -1));
 
         TxDescreveProduto.setEditable(false);
+        jPanel1.add(TxDescreveProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 32, 469, -1));
 
         jLabel3.setText("Quantidade:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, -1));
 
         TxQtdProd.setEditable(false);
+        jPanel1.add(TxQtdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 93, 60, -1));
 
         jLabel4.setText("Preço Pago:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 72, -1, -1));
 
         TxPrecoProd.setEditable(false);
+        jPanel1.add(TxPrecoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 93, 73, -1));
 
         jLabel5.setText("Preço Venda Unitario:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 72, -1, -1));
 
         TxPrecoProdVenda.setEditable(false);
+        jPanel1.add(TxPrecoProdVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 93, 73, -1));
 
         BtNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-add-48.png"))); // NOI18N
         BtNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +122,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtNovoActionPerformed(evt);
             }
         });
+        jPanel1.add(BtNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 138, 68, 49));
 
         BtSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-save-close-48.png"))); // NOI18N
         BtSalvar.setEnabled(false);
@@ -117,6 +131,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtSalvarActionPerformed(evt);
             }
         });
+        jPanel1.add(BtSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 138, 68, 49));
 
         BtAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-update-48.png"))); // NOI18N
         BtAlterar.setEnabled(false);
@@ -125,6 +140,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtAlterarActionPerformed(evt);
             }
         });
+        jPanel1.add(BtAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 138, 68, 49));
 
         BtExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-delete-bin-48.png"))); // NOI18N
         BtExcluir.setEnabled(false);
@@ -133,6 +149,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtExcluirActionPerformed(evt);
             }
         });
+        jPanel1.add(BtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 68, 49));
 
         tblCliente = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
@@ -155,6 +172,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblCliente);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 671, 297));
+
         BtPesquisarProd.setText("Pesquisar");
         BtPesquisarProd.setEnabled(false);
         BtPesquisarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +181,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtPesquisarProdActionPerformed(evt);
             }
         });
+        jPanel1.add(BtPesquisarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 31, -1, -1));
 
         BtEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-edit-file-48 (1).png"))); // NOI18N
         BtEditar.setEnabled(false);
@@ -175,6 +195,7 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtEditarActionPerformed(evt);
             }
         });
+        jPanel1.add(BtEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 68, 49));
 
         BtRelatorio.setText("Relatorio");
         BtRelatorio.addActionListener(new java.awt.event.ActionListener() {
@@ -182,87 +203,16 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                 BtRelatorioActionPerformed(evt);
             }
         });
+        jPanel1.add(BtRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 92, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxQtdProd)
-                        .addComponent(TxCodProduto))
-                    .addComponent(BtNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TxDescreveProduto)
-                        .addGap(4, 4, 4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(TxPrecoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TxPrecoProdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(BtAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(BtEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(BtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtPesquisarProd)
-                    .addComponent(BtRelatorio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxDescreveProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtPesquisarProd))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxQtdProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxPrecoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxPrecoProdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtRelatorio))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        BtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-delete-48.png"))); // NOI18N
+        BtCancelar.setEnabled(false);
+        BtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 68, 49));
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
 
@@ -321,12 +271,18 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         TxQtdProd.setEditable(true);
         BtEditar.setEnabled(false);
         BtExcluir.setEnabled(false);
+        BtNovo.setEnabled(false);
+        BtCancelar.setEnabled(true);
         
     }//GEN-LAST:event_BtNovoActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        BtNovo.setEnabled(false);
+        BtCancelar.setEnabled(true);
         BtExcluir.setEnabled(true);
         BtEditar.setEnabled(true);
+        BtSalvar.setEnabled(false);
+       
         TxDescreveProduto.setEditable(false);
         TxPrecoProd.setEditable(false);
         TxPrecoProdVenda.setEditable(false);
@@ -438,6 +394,10 @@ public class TelaPeças extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_BtRelatorioActionPerformed
+
+    private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
+       limpar();
+    }//GEN-LAST:event_BtCancelarActionPerformed
 public void limpar(){
     TxCodProduto.setText("");
     TxDescreveProduto.setText("");
@@ -452,6 +412,8 @@ public void limpar(){
     BtSalvar.setEnabled(false);
     BtAlterar.setEnabled(false);
     BtEditar.setEnabled(false);
+    BtCancelar.setEnabled(false);
+    BtExcluir.setEnabled(false);
    
             
 }
@@ -575,6 +537,7 @@ public void limpar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
+    private javax.swing.JButton BtCancelar;
     private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtNovo;

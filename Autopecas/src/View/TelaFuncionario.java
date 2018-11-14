@@ -136,6 +136,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         BtAlterarF = new javax.swing.JButton();
         BtEditar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
+        BtCancelar = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -575,7 +576,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 BtIncluirFActionPerformed(evt);
             }
         });
-        jPanel2.add(BtIncluirF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 60, 50));
+        jPanel2.add(BtIncluirF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 60, 50));
 
         BtSalvarF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-save-close-48.png"))); // NOI18N
         BtSalvarF.setToolTipText("");
@@ -584,7 +585,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 BtSalvarFActionPerformed(evt);
             }
         });
-        jPanel2.add(BtSalvarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 60, 50));
+        jPanel2.add(BtSalvarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 60, 50));
 
         BtAlterarF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-update-48.png"))); // NOI18N
         BtAlterarF.addActionListener(new java.awt.event.ActionListener() {
@@ -592,7 +593,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 BtAlterarFActionPerformed(evt);
             }
         });
-        jPanel2.add(BtAlterarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 60, 50));
+        jPanel2.add(BtAlterarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 60, 50));
 
         BtEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-edit-file-48 (1).png"))); // NOI18N
         BtEditar.setEnabled(false);
@@ -601,7 +602,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 BtEditarActionPerformed(evt);
             }
         });
-        jPanel2.add(BtEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 60, 50));
+        jPanel2.add(BtEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 60, 50));
 
         BtExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-delete-bin-48.png"))); // NOI18N
         BtExcluir.setEnabled(false);
@@ -610,7 +611,16 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 BtExcluirActionPerformed(evt);
             }
         });
-        jPanel2.add(BtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 60, 50));
+        jPanel2.add(BtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 60, 50));
+
+        BtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-delete-48.png"))); // NOI18N
+        BtCancelar.setEnabled(false);
+        BtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 50, 50));
 
         jTabbedPane1.addTab("Manutenção", jPanel2);
 
@@ -619,13 +629,13 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -633,6 +643,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtIncluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtIncluirFActionPerformed
+        BtIncluirF.setEnabled(false);
+        BtCancelar.setEnabled(true);
         BtExcluir.setEnabled(false);
         BtEditar.setEnabled(false);
         TxIdF.setText("");
@@ -701,6 +713,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 Dao_cad.salvar(cad);
                 limpaTabela();
                 Show_Clientes();
+                BtIncluirF.setEnabled(true);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -709,7 +722,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
          }
     }//GEN-LAST:event_BtSalvarFActionPerformed
 public void limpar(){
-    
+                BtIncluirF.setEnabled(true);
+                BtCancelar.setEnabled(false);
                 TxIdF.setText("");
                 TxNomeF.setText("");
                 TxEndereçoF.setText("");
@@ -744,6 +758,7 @@ public void limpar(){
                 BtSalvarF.setEnabled(false);
                 BtExcluir.setEnabled(false);
                 BtAlterarF.setEnabled(false);
+                BtEditar.setEnabled(false);
                
     
 }
@@ -868,7 +883,10 @@ public void limpar(){
     }//GEN-LAST:event_BtRelatoriActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        BtIncluirF.setEnabled(false);
+        BtCancelar.setEnabled(true);
         TxNomeF.setEditable(false);
+        BtSalvarF.setEnabled(false);
         TxEndereçoF.setEditable(false);
         TxComplementoF.setEditable(false);
         TxBairroF.setEditable(false);
@@ -952,6 +970,10 @@ public void limpar(){
                 BtEditar.setEnabled(false);
                 BtExcluir.setEnabled(false);
     }//GEN-LAST:event_BtEditarActionPerformed
+
+    private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
+      limpar();
+    }//GEN-LAST:event_BtCancelarActionPerformed
 
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
@@ -1127,6 +1149,7 @@ public void limpar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterarF;
+    private javax.swing.JButton BtCancelar;
     private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtIncluirF;
