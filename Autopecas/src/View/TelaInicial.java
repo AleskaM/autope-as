@@ -51,6 +51,8 @@ public class TelaInicial extends javax.swing.JFrame {
         FuncionarioManutenção = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         PeçasManutençao = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Início");
@@ -108,6 +110,18 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu3.add(PeçasManutençao);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu2.setText("Venda");
+
+        jMenuItem1.setText("Manutençao");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -179,6 +193,12 @@ public class TelaInicial extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaVenda tv = new TelaVenda();
+        jDesktopPane1.add(tv);
+        tv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
 
    
@@ -189,8 +209,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem PeçasManutençao;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
