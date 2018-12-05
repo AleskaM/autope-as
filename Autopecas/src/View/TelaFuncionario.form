@@ -345,7 +345,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTabbedPane2" max="32767" attributes="0"/>
+                                  <Component id="jTabbedPane2" pref="614" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -400,184 +400,19 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="TxFunc" min="-2" pref="176" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="TxUsu" min="-2" pref="170" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="TxSen" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="TxCidadeF" min="-2" pref="332" max="-2" attributes="0"/>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="TxEstadoF" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TxComplementoF" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                                                          <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="354" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TxCepF" min="-2" pref="88" max="-2" attributes="0"/>
-                                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                                              <Component id="TipodeViaF" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="TxEndereçoF" max="32767" attributes="0"/>
-                                                                  <Group type="102" attributes="0">
-                                                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                                  </Group>
-                                                                  <Component id="TxBairroF" max="32767" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                                  <Component id="TxTelF" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="TxCelF" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TxEmailF" max="32767" attributes="0"/>
-                                                          <Group type="102" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="TxCepF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TipodeViaF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxEndereçoF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="TxComplementoF" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxBairroF" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="TxCidadeF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxEstadoF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="TxTelF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxCelF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxEmailF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="TxSen" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxUsu" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="TxFunc" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="34" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                            <Property name="useNullLayout" type="boolean" value="false"/>
                           </Layout>
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel5">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="CEP"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="11" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JFormattedTextField" name="TxCepF">
                               <Properties>
@@ -586,11 +421,21 @@
                                   <Format format="#####-###" subtype="-1" type="5"/>
                                 </Property>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="31" width="88" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel4">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Tipo de Via"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="165" y="11" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="TipodeViaF">
                               <Properties>
@@ -609,31 +454,61 @@
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="156" y="31" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel6">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="279" y="11" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxEndere&#xe7;oF">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="279" y="31" width="320" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel7">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Complemento"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="62" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxComplementoF">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="82" width="235" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel8">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Bairro"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="279" y="62" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxBairroF">
                               <Properties>
@@ -642,11 +517,21 @@
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxBairroFActionPerformed"/>
                               </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="279" y="82" width="320" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel9">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Telefone Fixo"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="164" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JFormattedTextField" name="TxTelF">
                               <Properties>
@@ -655,11 +540,21 @@
                                   <Format format="(##)####-####" subtype="-1" type="5"/>
                                 </Property>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="184" width="135" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel10">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Telefone Celular"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="155" y="164" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JFormattedTextField" name="TxCelF">
                               <Properties>
@@ -668,31 +563,61 @@
                                   <Format format="(##)#####-####" subtype="-1" type="5"/>
                                 </Property>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="155" y="184" width="145" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel11">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Email"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="318" y="164" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxEmailF">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="318" y="184" width="281" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel29">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Cidade"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="113" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel30">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="UF"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="360" y="113" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxCidadeF">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="133" width="332" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="TxEstadoF">
                               <Properties>
@@ -732,39 +657,78 @@
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="360" y="133" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel13">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="222" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel14">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="204" y="222" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel31">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Senha"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="TxSen">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxSenActionPerformed"/>
-                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="398" y="222" width="-1" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="TxUsu">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
                               </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="204" y="242" width="170" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="TxFunc">
+                            <Component class="javax.swing.JComboBox" name="TxFunc">
                               <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="4">
+                                    <StringItem index="0" value="Selecione"/>
+                                    <StringItem index="1" value="Adiministrador"/>
+                                    <StringItem index="2" value="Vendedor"/>
+                                    <StringItem index="3" value="Atendente"/>
+                                  </StringArray>
+                                </Property>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="10" y="242" width="176" height="-1"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="javax.swing.JPasswordField" name="TxSen">
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="400" y="240" width="180" height="-1"/>
+                                </Constraint>
+                              </Constraints>
                             </Component>
                           </SubComponents>
                         </Container>
