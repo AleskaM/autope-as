@@ -10,6 +10,8 @@ import Dao.VendaDao;
 import Model.CadastroCliente;
 import Model.CadastroProduto;
 import Model.CadastroUsuário;
+import Model.ItensVenda;
+import Model.Venda;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,11 +25,19 @@ import javax.swing.table.DefaultTableModel;
  * @author ShadowsFate
  */
 public class TelaVenda extends javax.swing.JInternalFrame {
-    VendaDao venda;
+    VendaDao venda1;
+    Venda venda;
+    ItensVenda itensVenda;
+    CadastroProduto produto; 
+    CadastroUsuário vendedor;
+    CadastroCliente cliente;
     public TelaVenda() {
         
         initComponents();
-        venda = new VendaDao();
+        venda1 = new VendaDao();
+        itensVenda = new ItensVenda();
+        produto = new CadastroProduto();
+        venda = new Venda();
         PreencherCombo();
     }
 
@@ -74,13 +84,13 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         TxTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BtAdicionar = new javax.swing.JButton();
+        BtRemover = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        lblTotalVenda = new javax.swing.JLabel();
 
         jDialog1.setAlwaysOnTop(true);
         jDialog1.setMinimumSize(new java.awt.Dimension(600, 431));
-        jDialog1.setPreferredSize(new java.awt.Dimension(600, 431));
         jDialog1.setResizable(false);
 
         tblCliente = new javax.swing.JTable(){
@@ -153,7 +163,6 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         );
 
         jDialog2.setMinimumSize(new java.awt.Dimension(570, 380));
-        jDialog2.setPreferredSize(new java.awt.Dimension(570, 380));
 
         tblProduto = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
@@ -296,14 +305,20 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 460, 210));
 
-        jButton3.setText("+");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 50, -1));
+        BtAdicionar.setText("+");
+        BtAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAdicionarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 50, -1));
 
-        jButton4.setText("-");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 50, -1));
+        BtRemover.setText("-");
+        getContentPane().add(BtRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 50, -1));
 
         jButton5.setText("Finalizar Venda");
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
+        getContentPane().add(lblTotalVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -358,9 +373,15 @@ public class TelaVenda extends javax.swing.JInternalFrame {
      String id = "" + tblProduto.getValueAt(tblProduto.getSelectedRow(), 0);
      String descricao =""+ tblProduto.getValueAt(tblProduto.getSelectedRow(), 1);
      String unit =""+ tblProduto.getValueAt(tblProduto.getSelectedRow(), 3);
+     String qtd=""+tblProduto.getValueAt(tblProduto.getSelectedRow(),2); 
      TxIdProd.setText(id);
      TxNomeProd.setText(descricao);
      TxUnit.setText(unit);
+     produto = new CadastroProduto();
+     produto.setCodproduto(Integer.valueOf(id));
+     produto.setDescriprod(descricao);
+     produto.setPrecovenda(Float.valueOf(unit));
+     produto.setQtdprod(Integer.valueOf(qtd));
      TxIdProd.setEditable(false);
      TxNomeProd.setEditable(false);
      TxUnit.setEditable(false);
@@ -381,6 +402,25 @@ public class TelaVenda extends javax.swing.JInternalFrame {
      }
     }//GEN-LAST:event_TxQTDCaretUpdate
 
+    private void BtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAdicionarActionPerformed
+      itensVenda = new ItensVenda();
+      itensVenda.setProduto(produto);
+      itensVenda.setPreco(Float.valueOf(TxUnit.getText()));
+      itensVenda.setQuantidade(Integer.valueOf(TxQTD.getText()));
+      itensVenda.setPrecototalitem(Float.valueOf(TxTotal.getText()));
+      venda.getItensvenda().add(itensVenda);
+      lblTotalVenda.setText(String.valueOf(Totalvenda()));
+      Show_Produto();
+      
+      
+    }//GEN-LAST:event_BtAdicionarActionPerformed
+private float Totalvenda(){
+    float total=0;
+    for(ItensVenda iv : venda.getItensvenda()){
+        total +=iv.getPrecototalitem();
+    }
+    return total;
+}
  public ArrayList<CadastroCliente>getLista(){
         ArrayList<CadastroCliente>Lista = new ArrayList<CadastroCliente>();
        Conexao con = new Conexao();
@@ -452,6 +492,23 @@ public void Show_Clientes(){
            
         }
       tblCliente.getTableHeader().setReorderingAllowed(false);
+   
+      
+        }
+public void Show_Produto(){
+     
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        Object[]row= new Object[4];
+     
+            row[0]=TxNomeProd.getText();
+            row[1]=TxQTD.getText();
+            row[2]=TxUnit.getText();
+            row[3]=TxTotal.getText();
+           
+            model.addRow(row);
+           
+      
+      jTable1.getTableHeader().setReorderingAllowed(false);
    
       
         }
@@ -555,8 +612,10 @@ public void Show_Clientes(){
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtAdicionar;
     private javax.swing.JButton BtBuscar;
     private javax.swing.JButton BtBuscarN;
+    private javax.swing.JButton BtRemover;
     private javax.swing.JButton BtSelecionar;
     private javax.swing.JButton BtSelecionarProd;
     private javax.swing.JTextField TXNomeBusc;
@@ -568,8 +627,6 @@ public void Show_Clientes(){
     private javax.swing.JTextField TxTotal;
     private javax.swing.JTextField TxUnit;
     private javax.swing.JComboBox<String> VendedorCombo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
@@ -589,6 +646,7 @@ public void Show_Clientes(){
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblTotalVenda;
     private javax.swing.JTable tblCliente;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txNomecliente;

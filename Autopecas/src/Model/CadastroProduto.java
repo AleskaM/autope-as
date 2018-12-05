@@ -10,7 +10,7 @@ public class CadastroProduto {
     private float precopag;
     private float precovenda;
 
-    private String pesquisa;
+    private String pesquisa="nada";
 
     public int getCodproduto() {
         return codproduto;

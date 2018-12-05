@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -68,7 +69,7 @@ public class Venda {
     
     
     public Venda(){
-        
+        this.itensvenda= new ArrayList<>();
     }
     
     
