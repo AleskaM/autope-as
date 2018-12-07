@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,6 +38,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         venda1 = new VendaDao();
         itensVenda = new ItensVenda();
         produto = new CadastroProduto();
+        vendedor = new CadastroUsuário();
         venda = new Venda();
         PreencherCombo();
     }
@@ -86,7 +88,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         BtAdicionar = new javax.swing.JButton();
         BtRemover = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        BtFinalizar = new javax.swing.JButton();
         lblTotalVenda = new javax.swing.JLabel();
 
         jDialog1.setAlwaysOnTop(true);
@@ -235,10 +237,18 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         jLabel1.setText("Vendedor");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
+        VendedorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        VendedorCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendedorComboActionPerformed(evt);
+            }
+        });
         getContentPane().add(VendedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 267, -1));
 
         jLabel2.setText("Cliente");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        TxIdcliente.setEditable(false);
         getContentPane().add(TxIdcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 40, -1));
 
         jLabel3.setText("ID");
@@ -246,6 +256,8 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Nome");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        txNomecliente.setEditable(false);
         getContentPane().add(txNomecliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 210, -1));
 
         BtBuscarN.setText("Buscar");
@@ -261,10 +273,14 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         jLabel6.setText("ID");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        TxIdProd.setEditable(false);
         getContentPane().add(TxIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 40, -1));
 
         jLabel7.setText("Descriçao");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+
+        TxNomeProd.setEditable(false);
         getContentPane().add(TxNomeProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 200, 20));
 
         BtBuscar.setText("Buscar");
@@ -278,6 +294,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         jLabel8.setText("QTD");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        TxQTD.setEditable(false);
         TxQTD.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 TxQTDCaretUpdate(evt);
@@ -287,10 +304,14 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Preço Unitario");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
+
+        TxUnit.setEditable(false);
         getContentPane().add(TxUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 100, -1));
 
         jLabel10.setText("Preço Total");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
+
+        TxTotal.setEditable(false);
         getContentPane().add(TxTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 110, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -314,10 +335,20 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         getContentPane().add(BtAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 50, -1));
 
         BtRemover.setText("-");
+        BtRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtRemoverActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 50, -1));
 
-        jButton5.setText("Finalizar Venda");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
+        BtFinalizar.setText("Finalizar Venda");
+        BtFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtFinalizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
         getContentPane().add(lblTotalVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
         pack();
@@ -342,11 +373,13 @@ public class TelaVenda extends javax.swing.JInternalFrame {
      String nome =""+ tblCliente.getValueAt(tblCliente.getSelectedRow(), 1);
      TxIdcliente.setText(id);
      txNomecliente.setText(nome);
+   
      TxIdcliente.setEditable(false);
      txNomecliente.setEditable(false);
      jDialog1.setVisible(false);
      limpaTabela();
      TXNomeBusc.setText("");
+    
     }//GEN-LAST:event_BtSelecionarActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
@@ -374,6 +407,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
      String descricao =""+ tblProduto.getValueAt(tblProduto.getSelectedRow(), 1);
      String unit =""+ tblProduto.getValueAt(tblProduto.getSelectedRow(), 3);
      String qtd=""+tblProduto.getValueAt(tblProduto.getSelectedRow(),2); 
+     TxQTD.setEditable(true);
      TxIdProd.setText(id);
      TxNomeProd.setText(descricao);
      TxUnit.setText(unit);
@@ -403,6 +437,10 @@ public class TelaVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TxQTDCaretUpdate
 
     private void BtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAdicionarActionPerformed
+      if(TxNomeProd.getText().equals("")  || TxQTD.getText().equals("") ){
+          JOptionPane.showMessageDialog(null,"Por favor seleciona um produto ou verifique se todos os campos entao preenchidos");
+      }
+      else{
       itensVenda = new ItensVenda();
       itensVenda.setProduto(produto);
       itensVenda.setPreco(Float.valueOf(TxUnit.getText()));
@@ -411,9 +449,77 @@ public class TelaVenda extends javax.swing.JInternalFrame {
       venda.getItensvenda().add(itensVenda);
       lblTotalVenda.setText(String.valueOf(Totalvenda()));
       Show_Produto();
+      limparproduto();  
+      }
       
       
     }//GEN-LAST:event_BtAdicionarActionPerformed
+public void limparproduto(){
+    TxNomeProd.setText("");
+    TxIdProd.setText("");
+    TxQTD.setText("");
+    TxUnit.setText("");
+    TxTotal.setText("");
+ 
+}
+    private void BtRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRemoverActionPerformed
+    venda.getItensvenda().remove(jTable1.getSelectedRow());
+    ((DefaultTableModel) jTable1.getModel()).removeRow(jTable1.getSelectedRow());
+
+    limparproduto();
+  
+    lblTotalVenda.setText(String.valueOf(Totalvenda()));
+    }//GEN-LAST:event_BtRemoverActionPerformed
+
+    private void BtFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtFinalizarActionPerformed
+     
+       if(lblTotalVenda.getText().equals("") ||TxIdcliente.getText().equals("") || TxIdcliente.getText().equals("") || VendedorCombo.getSelectedItem().equals("Selecione")){
+           JOptionPane.showMessageDialog(null,"Por favor preencha todos os campos ou adicione produtos para finalizar a venda");
+       } 
+        else{   
+     CadastroCliente cliente= new CadastroCliente();
+     cliente.setId(Integer.valueOf(TxIdcliente.getText()));
+      venda.setCliente(cliente);
+      venda.setVendedor(vendedor);
+      venda.setTotalVenda(Float.valueOf(lblTotalVenda.getText()));
+ try{
+     
+     venda1.salvar(venda);
+     limpaTabela3();
+     TxIdcliente.setText("");
+     txNomecliente.setText("");
+     TxQTD.setEnabled(false);
+     VendedorCombo.setSelectedItem("Selecione");
+     lblTotalVenda.setText("");
+     JOptionPane.showMessageDialog(null, "Venda realizada com susesso");
+ }catch(SQLException ex){
+     
+ }
+                }  
+    }//GEN-LAST:event_BtFinalizarActionPerformed
+
+    private void VendedorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorComboActionPerformed
+       String nome=""+VendedorCombo.getSelectedItem();
+       Conexao con = new Conexao();
+       String sql;
+        int id=0;
+       PreparedStatement pst;
+       sql="select idFuncionario from Funcionario where nome='"+nome+"'";
+        try {
+            pst=Conexao.getInstance().prepareStatement(sql);
+            ResultSet rs= pst.executeQuery();
+           while(rs.next()){
+             
+              id=rs.getInt("idFuncionario");
+
+           }
+            vendedor.setId(id);
+           venda.setVendedor(vendedor);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_VendedorComboActionPerformed
 private float Totalvenda(){
     float total=0;
     for(ItensVenda iv : venda.getItensvenda()){
@@ -520,13 +626,16 @@ public void Show_Produto(){
         DefaultTableModel model =(DefaultTableModel)tblProduto.getModel();
         model.setNumRows(0);
     }
- 
+    public void limpaTabela3(){
+        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
+        model.setNumRows(0);
+    }
     public void PreencherCombo(){
           
        Conexao con = new Conexao();
         String sql;
        PreparedStatement pst;
-         sql="select *from Funcionario ";
+         sql="select *from Funcionario where funcao='Vendedor'";
       
         
         try{
@@ -615,6 +724,7 @@ public void Show_Produto(){
     private javax.swing.JButton BtAdicionar;
     private javax.swing.JButton BtBuscar;
     private javax.swing.JButton BtBuscarN;
+    private javax.swing.JButton BtFinalizar;
     private javax.swing.JButton BtRemover;
     private javax.swing.JButton BtSelecionar;
     private javax.swing.JButton BtSelecionarProd;
@@ -627,7 +737,6 @@ public void Show_Produto(){
     private javax.swing.JTextField TxTotal;
     private javax.swing.JTextField TxUnit;
     private javax.swing.JComboBox<String> VendedorCombo;
-    private javax.swing.JButton jButton5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
