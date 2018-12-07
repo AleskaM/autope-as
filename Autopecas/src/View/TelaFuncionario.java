@@ -60,7 +60,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         TipodeViaF.setEnabled(false);
         TxEstadoF.setEnabled(false);
         
-        BtLimparF.setEnabled(false);
+    
         centralizarComponente();
 
     }
@@ -86,16 +86,11 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        BtPesquisarConsultaF = new javax.swing.JButton();
-        BtLimparF = new javax.swing.JButton();
-        BtRelatori = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
-        jLabel32 = new javax.swing.JLabel();
-        TxConsultaF = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         TxNomeConsultaF = new javax.swing.JTextField();
+        BtRelatori = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -169,53 +164,6 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Manutenção");
 
-        BtPesquisarConsultaF.setText("Pesquisar");
-        BtPesquisarConsultaF.setEnabled(false);
-        BtPesquisarConsultaF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtPesquisarConsultaFActionPerformed(evt);
-            }
-        });
-
-        BtLimparF.setText("Limpar");
-        BtLimparF.setEnabled(false);
-        BtLimparF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtLimparFActionPerformed(evt);
-            }
-        });
-
-        BtRelatori.setText("Relatorio");
-        BtRelatori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtRelatoriActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtPesquisarConsultaF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtLimparF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtRelatori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(63, 63, 63))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtPesquisarConsultaF)
-                .addGap(19, 19, 19)
-                .addComponent(BtLimparF)
-                .addGap(18, 18, 18)
-                .addComponent(BtRelatori)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         tblCliente = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex,int colIndex){
                 return false;
@@ -237,51 +185,52 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblCliente);
 
-        jLabel32.setText("Cód Funcionário");
-
-        TxConsultaF.setEditable(false);
-
         jLabel33.setText("Nome");
 
-        TxNomeConsultaF.setEditable(false);
+        TxNomeConsultaF.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                TxNomeConsultaFCaretUpdate(evt);
+            }
+        });
+
+        BtRelatori.setText("Relatorio");
+        BtRelatori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtRelatoriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel33)
-                    .addComponent(TxNomeConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(TxNomeConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(BtRelatori, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(87, 87, 87))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxNomeConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(86, 86, 86)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxNomeConsultaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtRelatori))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jTabbedPane1.addTab("Consulta", jPanel1);
@@ -312,7 +261,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         jPanel6.add(TxCepF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 88, -1));
 
         jLabel4.setText("Tipo de Via");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 11, -1, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         TipodeViaF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Avenida", "Rua", "Fazenda" }));
         TipodeViaF.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +269,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 TipodeViaFActionPerformed(evt);
             }
         });
-        jPanel6.add(TipodeViaF, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 31, -1, -1));
+        jPanel6.add(TipodeViaF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         jLabel6.setText("Endereço");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 11, -1, -1));
@@ -519,7 +468,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -733,25 +682,6 @@ public void limpar(){
 
     }//GEN-LAST:event_TipodeViaFActionPerformed
 
-    private void BtPesquisarConsultaFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarConsultaFActionPerformed
-        if (TxConsultaF.getText().isEmpty() && TxNomeConsultaF.getText().isEmpty()) {
-            
-            JOptionPane.showMessageDialog(null, "Digite algum parâmetro para a pesquisa!");
-        } else {
-            BtLimparF.setEnabled(true);
-        }
-    }//GEN-LAST:event_BtPesquisarConsultaFActionPerformed
-
-    private void BtLimparFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtLimparFActionPerformed
-        int op = JOptionPane.showConfirmDialog(this, "Deseja realmente limpar?", "Confirmação",JOptionPane.YES_NO_OPTION);
-
-        if(op==0){
-            TxConsultaF.setText("");
-            TxNomeConsultaF.setText("");
-            }
-        BtLimparF.setEnabled(false);
-    }//GEN-LAST:event_BtLimparFActionPerformed
-
     private void BtRelatoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRelatoriActionPerformed
     
           String nomediretorio = null;
@@ -861,6 +791,11 @@ public void limpar(){
       limpar();
     }//GEN-LAST:event_BtCancelarActionPerformed
 
+    private void TxNomeConsultaFCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_TxNomeConsultaFCaretUpdate
+     limpaTabela();
+     Show_Clientes();
+    }//GEN-LAST:event_TxNomeConsultaFCaretUpdate
+
     public void centralizarComponente() {
         Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dw = getSize();
@@ -918,7 +853,7 @@ public void limpar(){
        PreparedStatement pst;
          sql="select *from Funcionario ";
       
-        
+        if(TxNomeConsultaF.getText().isEmpty()){
         try{
             
          pst=Conexao.getInstance().prepareStatement(sql);
@@ -939,6 +874,29 @@ public void limpar(){
         }catch(Exception e){
               e.printStackTrace();
               
+        }
+        }else{
+            sql="select *from Funcionario where nome like '%"+TxNomeConsultaF.getText()+"%'"; 
+            try {
+                pst=Conexao.getInstance().prepareStatement(sql); 
+                ResultSet rs= pst.executeQuery();
+                 CadastroUsuário cadc; 
+                while(rs.next()){
+                cadc= new  CadastroUsuário(rs.getInt("idFuncionario") , rs.getString("nome") , 
+                rs.getString("endereco") ,rs.getString("complemento")
+               ,rs.getString("bairro"),rs.getString("cidade"),
+                rs.getString("telefone"),rs.getString("celular"),
+                rs.getString("email"),rs.getString("funcao")
+               ,rs.getString("usuario"),rs.getString("senha"),rs.getString("tipodevia")
+               ,rs.getString("estado"),rs.getString("cep"));
+              
+                Lista.add(cadc);
+               
+            }
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
         }
         return Lista;
     }
@@ -1039,8 +997,6 @@ public void limpar(){
     private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtIncluirF;
-    private javax.swing.JButton BtLimparF;
-    private javax.swing.JButton BtPesquisarConsultaF;
     private javax.swing.JButton BtRelatori;
     private javax.swing.JButton BtSalvarF;
     private javax.swing.JComboBox<String> TipodeViaF;
@@ -1049,7 +1005,6 @@ public void limpar(){
     private javax.swing.JFormattedTextField TxCepF;
     private javax.swing.JTextField TxCidadeF;
     private javax.swing.JTextField TxComplementoF;
-    private javax.swing.JTextField TxConsultaF;
     private javax.swing.JTextField TxEmailF;
     private javax.swing.JTextField TxEndereçoF;
     private javax.swing.JComboBox<String> TxEstadoF;
@@ -1073,7 +1028,6 @@ public void limpar(){
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1088,7 +1042,6 @@ public void limpar(){
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;

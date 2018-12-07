@@ -75,7 +75,6 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         BtExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
-        BtPesquisarProd = new javax.swing.JButton();
         BtEditar = new javax.swing.JButton();
         BtRelatorio = new javax.swing.JButton();
         BtCancelar = new javax.swing.JButton();
@@ -95,7 +94,11 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         jLabel2.setText("Descriçao do Produto:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 11, -1, -1));
 
-        TxDescreveProduto.setEditable(false);
+        TxDescreveProduto.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                TxDescreveProdutoCaretUpdate(evt);
+            }
+        });
         jPanel1.add(TxDescreveProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 32, 469, -1));
 
         jLabel3.setText("Quantidade:");
@@ -174,15 +177,6 @@ public class TelaPeças extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 671, 297));
 
-        BtPesquisarProd.setText("Pesquisar");
-        BtPesquisarProd.setEnabled(false);
-        BtPesquisarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtPesquisarProdActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtPesquisarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 31, -1, -1));
-
         BtEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/icons8-edit-file-48 (1).png"))); // NOI18N
         BtEditar.setEnabled(false);
         BtEditar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -227,11 +221,6 @@ public class TelaPeças extends javax.swing.JInternalFrame {
         Dimension dw = getSize();
         setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
     }
-    private void BtPesquisarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarProdActionPerformed
-        BtAlterar.setEnabled(true);
-        BtExcluir.setEnabled(true);
-    }//GEN-LAST:event_BtPesquisarProdActionPerformed
-
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
         if(TxDescreveProduto.getText().equals("") ||  TxPrecoProd.getText().equals("") || TxPrecoProdVenda.getText().equals("") || TxQtdProd.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Por favor preencha todos os campos");
@@ -250,6 +239,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                  limpaTabela();
                  Show_Clientes();
                  limpar();
+                 TxDescreveProduto.setEnabled(true);
+       TxDescreveProduto.setEditable(true);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -342,6 +333,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
                  limpaTabela();
                  Show_Clientes();
                  limpar();
+                 TxDescreveProduto.setEnabled(true);
+       TxDescreveProduto.setEditable(true);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPeças.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -360,6 +353,8 @@ public class TelaPeças extends javax.swing.JInternalFrame {
           pt.Excluir(produto);
           BtExcluir.setEnabled(false);
           limpar();
+          TxDescreveProduto.setEnabled(true);
+       TxDescreveProduto.setEditable(true);
           limpaTabela();
           Show_Clientes();
       } catch (SQLException ex) {
@@ -397,7 +392,14 @@ public class TelaPeças extends javax.swing.JInternalFrame {
 
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
        limpar();
+       TxDescreveProduto.setEnabled(true);
+       TxDescreveProduto.setEditable(true);
     }//GEN-LAST:event_BtCancelarActionPerformed
+
+    private void TxDescreveProdutoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_TxDescreveProdutoCaretUpdate
+      limpaTabela();
+      Show_Clientes();
+    }//GEN-LAST:event_TxDescreveProdutoCaretUpdate
 public void limpar(){
     TxCodProduto.setText("");
     TxDescreveProduto.setText("");
@@ -424,7 +426,7 @@ public void limpar(){
        PreparedStatement pst;
          sql="select *from Produto ";
       
-        
+       if(TxDescreveProduto.getText().isEmpty()){ 
         try{
             
          pst=Conexao.getInstance().prepareStatement(sql);
@@ -443,6 +445,26 @@ public void limpar(){
               e.printStackTrace();
               
         }
+       }else{
+             sql="select *from Produto where descricao like '%"+TxDescreveProduto.getText()+"%'"; 
+            try {
+                pst=Conexao.getInstance().prepareStatement(sql);
+                ResultSet rs= pst.executeQuery();
+            CadastroProduto cadc;
+            while(rs.next()){
+                cadc= new  CadastroProduto(rs.getInt("idproduto") , rs.getString("descricao") , 
+                rs.getInt("qtdprod") ,rs.getFloat("precopag")
+               ,rs.getFloat("precovenda"));
+
+               
+                Lista.add(cadc);
+               
+            }
+            
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       }
         return Lista;
     }
   
@@ -541,7 +563,6 @@ public void limpar(){
     private javax.swing.JButton BtEditar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtNovo;
-    private javax.swing.JButton BtPesquisarProd;
     private javax.swing.JButton BtRelatorio;
     private javax.swing.JButton BtSalvar;
     private javax.swing.JTextField TxCodProduto;

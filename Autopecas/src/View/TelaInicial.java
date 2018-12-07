@@ -138,27 +138,31 @@ public class TelaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*public void MecanicoLogin()
+    public void Vendedor()
     {
-        jMenu1.setEnabled(false);
-        jMenu1.setVisible(false);
+        jMenu2.setEnabled(true);
+        jMenu2.setVisible(true);
         jMenu4.setEnabled(false);
         jMenu4.setVisible(false);
         jMenu3.setEnabled(false);
         jMenu3.setVisible(false);
-        jMenu5.setEnabled(false);
-        jMenu5.setVisible(false);
+        jMenu4.setEnabled(false);
+        jMenu4.setVisible(false);
+        jMenu1.setEnabled(false);
+        jMenu1.setVisible(false);
     }
-    public void AtendenteLogin()
+   public void AtendenteLogin()
     {
+        jMenu4.setEnabled(true);
+        jMenu4.setVisible(true);
         jMenu1.setEnabled(false);
         jMenu1.setVisible(false);
         jMenu2.setEnabled(false);
         jMenu2.setVisible(false);
-        jMenu3.setEnabled(false);
-        jMenu3.setVisible(false);
+        jMenu3.setEnabled(true);
+        jMenu3.setVisible(true);
     }
-    public void GerenteLogin()
+   public void AdiministradorLogin()
     {
         jMenu1.setEnabled(true);
         jMenu1.setVisible(true);
@@ -168,9 +172,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu3.setVisible(true);
         jMenu4.setEnabled(true);
         jMenu4.setVisible(true);
-        jMenu5.setEnabled(true);
-        jMenu5.setVisible(true);
-    }*/
+     
+    }
     private void FuncionarioManutençãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionarioManutençãoActionPerformed
         TelaFuncionario tf = new TelaFuncionario();
         jDesktopPane1.add(tf);

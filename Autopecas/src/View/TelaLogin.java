@@ -6,8 +6,14 @@
 package View;
 
 
+import Dao.Conexao;
 import javax.swing.JButton;
 import com.sun.glass.events.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 /**
@@ -39,16 +45,24 @@ public String nome;
         TxSenha = new javax.swing.JPasswordField();
         BtEntrar = new javax.swing.JButton();
         BtCancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        TxTipousu = new javax.swing.JComboBox<>();
+        lblMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Identificação");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/locky_1016554.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, -1, -1));
 
         jLabel2.setText("Login:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
 
         jLabel3.setText("Senha:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 130, -1, -1));
+        getContentPane().add(TxLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 254, -1));
 
         TxSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +74,7 @@ public String nome;
                 TxSenhaKeyPressed(evt);
             }
         });
+        getContentPane().add(TxSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 254, -1));
 
         BtEntrar.setText("Entrar");
         BtEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +82,7 @@ public String nome;
                 BtEntrarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 195, 72, -1));
 
         BtCancelar.setText("Cancelar");
         BtCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,103 +90,108 @@ public String nome;
                 BtCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 195, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxSenha)
-                    .addComponent(TxLogin))
-                .addGap(13, 13, 13))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
-                .addComponent(BtEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(BtCancelar)
-                .addGap(53, 53, 53))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(TxLogin))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TxSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(38, 38, 38)))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtEntrar)
-                    .addComponent(BtCancelar))
-                .addContainerGap())
-        );
+        jLabel4.setText("Tipo de Usuario");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
-        setSize(new java.awt.Dimension(513, 267));
+        TxTipousu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Adiministrador", "Vendedor" }));
+        getContentPane().add(TxTipousu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 130, -1));
+
+        lblMensagem.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(lblMensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        setSize(new java.awt.Dimension(530, 267));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEntrarActionPerformed
-             
-        /*if((TxLogin.getText().equals("gerente.c01") && TxSenha.getText().equals("121"))){
+      
+        if(TxTipousu.getSelectedItem().equals("Atendente")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Atendente'"; 
+             try {
+                 pst=Conexao.getInstance().prepareStatement(sql);  
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+                 if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+                     lblMensagem.setText("");
+                   JOptionPane.showMessageDialog(null, "Bem Vindo!");
+                   TelaInicial Tela = new TelaInicial();
+                   Tela.AtendenteLogin();
+                    Tela.show();
+                    getRootPane().setDefaultButton(BtEntrar);
+                     this.dispose();
+                   
+                 }else{
+                lblMensagem.setText("Usuário ou senha incorretos");     
+                 }
+             } catch (SQLException ex) {
+            
+             }
+     
+         }
+         
+        else if(TxTipousu.getSelectedItem().equals("Vendedor")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Vendedor'"; 
+       
+       try {
+           pst=Conexao.getInstance().prepareStatement(sql);  
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+        if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+            lblMensagem.setText("");
             JOptionPane.showMessageDialog(null, "Bem Vindo!");
             TelaInicial Tela = new TelaInicial();
-            Tela.GerenteLogin();
+            Tela.Vendedor();
             Tela.show();
             getRootPane().setDefaultButton(BtEntrar);
             this.dispose();
+        }else{
+             lblMensagem.setText("Usuário ou senha incorretos");
         }
-        else if(TxLogin.getText().equals("atendente.c02")&& TxSenha.getText().equals("122")){
+        }catch(SQLException ex){
+            
+        }
+            }
+        else if(TxTipousu.getSelectedItem().equals("Adiministrador")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Adiministrador'"; 
+           
+       try {
+                pst=Conexao.getInstance().prepareStatement(sql); 
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+            if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+            lblMensagem.setText("");
             JOptionPane.showMessageDialog(null, "Bem Vindo!");
             TelaInicial Tela = new TelaInicial();
-            Tela.AtendenteLogin();
+            Tela.AdiministradorLogin();
             Tela.show();
             getRootPane().setDefaultButton(BtEntrar);
-            this.dispose();
+            this.dispose(); 
+          
+             }else{
+               lblMensagem.setText("Usuário ou senha incorretos"); 
+            }
+       } catch (SQLException ex) {
+               
+            }
+      
         }
        
-        else if(TxLogin.getText().equals("mecanico.c03") && TxSenha.getText().equals("123")){
-            JOptionPane.showMessageDialog(null, "Bem Vindo!");
-            TelaInicial Tela = new TelaInicial();
-            Tela.MecanicoLogin();
-            Tela.show();
-            getRootPane().setDefaultButton(BtEntrar);
-            this.dispose();
-        }
-        
-        else if(TxLogin.getText().equals("pecas.c04") && TxSenha.getText().equals("124")){
-            JOptionPane.showMessageDialog(null, "Bem Vindo!");
-           TelaInicial Tela = new TelaInicial();
-            Tela.MecanicoLogin();
-            Tela.show();
-            getRootPane().setDefaultButton(BtEntrar);
-            this.dispose();
-        }
+     
 
-        else{
-            JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
-        }
+     
         getRootPane().setDefaultButton(BtEntrar);
-        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);*/
+        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
     }//GEN-LAST:event_BtEntrarActionPerformed
 
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
@@ -190,6 +211,84 @@ public String nome;
         if (evt.getKeyCode()== KeyEvent.VK_ENTER)
         {
             getRootPane().setDefaultButton(BtEntrar);
+        if(TxTipousu.getSelectedItem().equals("Atendente")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Atendente'"; 
+             try {
+                 pst=Conexao.getInstance().prepareStatement(sql);  
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+                 if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+                   lblMensagem.setText("");
+                   JOptionPane.showMessageDialog(null, "Bem Vindo!");
+                   TelaInicial Tela = new TelaInicial();
+                   Tela.AtendenteLogin();
+                    Tela.show();
+                    getRootPane().setDefaultButton(BtEntrar);
+                     this.dispose();
+                 }else{
+                lblMensagem.setText("Usuário ou senha incorretos");     
+                 }
+             } catch (SQLException ex) {
+                 Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+             }
+     
+         }
+        else if(TxTipousu.getSelectedItem().equals("Vendedor")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Vendedor'"; 
+       
+       try {pst=Conexao.getInstance().prepareStatement(sql);  
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+        if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+            lblMensagem.setText("");
+            JOptionPane.showMessageDialog(null, "Bem Vindo!");
+            TelaInicial Tela = new TelaInicial();
+            Tela.Vendedor();
+            Tela.show();
+            getRootPane().setDefaultButton(BtEntrar);
+            this.dispose();
+        }else{
+             lblMensagem.setText("Usuário ou senha incorretos");
+        }
+        }catch(SQLException ex){
+            
+        }
+            }
+            
+        
+         else if(TxTipousu.getSelectedItem().equals("Adiministrador")){
+       Conexao con = new Conexao();
+       String sql;
+       PreparedStatement pst;
+       sql="select usuario,senha from Funcionario where funcao='Adiministrador'"; 
+           
+       try {
+                pst=Conexao.getInstance().prepareStatement(sql); 
+                 ResultSet rs= pst.executeQuery(); 
+                 rs.next();
+            if(rs.getString("usuario").equals(TxLogin.getText()) && rs.getString("senha").equals(TxSenha.getText())){
+            lblMensagem.setText("");
+            JOptionPane.showMessageDialog(null, "Bem Vindo!");
+            TelaInicial Tela = new TelaInicial();
+            Tela.AdiministradorLogin();
+            Tela.show();
+            getRootPane().setDefaultButton(BtEntrar);
+            this.dispose(); 
+          
+             }else{
+               lblMensagem.setText("Usuário ou senha incorretos"); 
+            }
+       } catch (SQLException ex) {
+               
+            }
+      
+        }
         }
     }//GEN-LAST:event_TxSenhaKeyPressed
 
@@ -244,9 +343,12 @@ public String nome;
     private javax.swing.JButton BtEntrar;
     private javax.swing.JTextField TxLogin;
     private javax.swing.JPasswordField TxSenha;
+    private javax.swing.JComboBox<String> TxTipousu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblMensagem;
     // End of variables declaration//GEN-END:variables
 
     boolean setVisible() {
